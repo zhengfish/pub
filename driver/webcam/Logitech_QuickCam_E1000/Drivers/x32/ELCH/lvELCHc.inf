@@ -1,0 +1,71 @@
+;-------------------------------------------------------
+; File: lvELCHc.inf
+; Logitech Video2 Camera Installation file
+; Copyright (c) 1996-2009 Logitech Inc.
+;-------------------------------------------------------
+
+[Version]
+signature="$CHICAGO$"
+Class=USB
+ClassGUID={36FC9E60-C465-11CF-8056-444553540000}
+Provider=%PVD%
+LayoutFile=LAYOUT.INF
+CatalogFile=lvELCHc.cat
+DriverVer=04/30/2009, 12.0.1278.0
+
+[DestinationDirs]
+DefaultDestDir=11               ; LDID_SYS
+
+[ControlFlags]
+ExcludeFromselect=*
+
+[Manufacturer]
+%LogitechMfg%=Logitech.Section,nt,nt.6.0
+
+[SourceDisksNames]
+1=%DISK_NAME%,,,
+
+[SourceDisksFiles]
+
+[Logitech.Section]
+%USB\VID_046D&PID_092D.DeviceDesc%=LogiHub.Dev,usb\vid_046d&pid_092d
+%USB\VID_046D&PID_092E.DeviceDesc%=LogiHub.Dev,usb\vid_046d&pid_092e
+%USB\VID_046D&PID_092F.DeviceDesc%=LogiHub.Dev,usb\vid_046d&pid_092f
+
+[Logitech.Section.NT]
+
+[Logitech.Section.NT.6.0]
+
+[LogiHub.Dev]
+AddReg=LogiHub.AddReg
+
+[LogiHub.Dev.NT]
+Include=usb.inf
+Needs=Composite.Dev.NT
+
+[LogiHub.Dev.NT.Services]
+Include=usb.inf
+Needs=Composite.Dev.NT.Services
+
+[LogiHub.AddReg]
+HKR,,DevLoader,,*NTKERN
+HKR,,NTMPDriver,,usbhub.sys
+
+[Strings]
+LogitechMfg="Logitech"
+DISK_NAME="Logitech USB Video Camera Disk"
+PVD="Logitech"
+USB\VID_046D&PID_092D.DeviceDesc="Logitech USB Camera (Express/Go)"
+USB\VID_046D&PID_092E.DeviceDesc="Logitech USB Camera (Chat)"
+USB\VID_046D&PID_092F.DeviceDesc="Logitech USB Camera (Express/Go)"
+
+[Strings.0411]
+LogitechMfg="Logicool"
+DISK_NAME="Logicool USB Video Camera Disk"
+PVD="Logicool"
+USB\VID_046D&PID_092D.DeviceDesc="Logicool USB Camera (Express/Go)"
+USB\VID_046D&PID_092E.DeviceDesc="Logicool USB Camera (Chat)"
+USB\VID_046D&PID_092F.DeviceDesc="Logicool USB Camera (Express/Go)"
+
+
+

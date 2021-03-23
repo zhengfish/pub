@@ -1,0 +1,111 @@
+;-------------------------------------------------------
+; File: lPEPI264c.inf
+; Logitech Video2 Camera Installation file
+; Copyright (c) 1996-2009 Logitech Inc.
+;-------------------------------------------------------
+
+[Version]
+signature="$CHICAGO$"
+Class=USB
+ClassGUID={36FC9E60-C465-11CF-8056-444553540000}
+Provider=%PVD%
+LayoutFile=LAYOUT.INF
+CatalogFile=lPEPI264c.cat
+DriverVer=04/30/2009, 12.0.1278.0
+
+[DestinationDirs]
+DefaultDestDir=11               ; LDID_SYS
+
+[ControlFlags]
+ExcludeFromselect=*
+
+[Manufacturer]
+%LogitechMfg%=Logitech.Section,nt,ntamd64,nt.6.0,ntamd64.6.0
+
+[SourceDisksNames]
+1=%DISK_NAME%,,,
+
+[SourceDisksFiles]
+
+[Logitech.Section]
+%USB\VID_046D&PID_089D.DeviceDesc%=LogiHub.Dev,usb\vid_046d&pid_089d
+%USB\VID_046D&PID_08D7.DeviceDesc%=LogiHub.Dev,usb\vid_046d&pid_08d7
+%USB\VID_046D&PID_08D8.DeviceDesc%=LogiHub.Dev,usb\vid_046d&pid_08d8
+%USB\VID_046D&PID_08D9.DeviceDesc%=LogiHub.Dev,usb\vid_046d&pid_08d9
+%USB\VID_046D&PID_08DA.DeviceDesc%=LogiHub.Dev,usb\vid_046d&pid_08da
+%USB\VID_046D&PID_08DD.DeviceDesc%=LogiHub.Dev,usb\vid_046d&pid_08dd
+%USB\VID_046D&PID_08AF.DeviceDesc%=LogiHub.Dev,usb\vid_046d&pid_08af
+
+[Logitech.Section.NT]
+%USB\VID_046D&PID_089D.DeviceDesc%=LogiHub.Dev,usb\vid_046d&pid_089d
+%USB\VID_046D&PID_08D7.DeviceDesc%=LogiHub.Dev,usb\vid_046d&pid_08d7
+%USB\VID_046D&PID_08D8.DeviceDesc%=LogiHub.Dev,usb\vid_046d&pid_08d8
+%USB\VID_046D&PID_08D9.DeviceDesc%=LogiHub.Dev,usb\vid_046d&pid_08d9
+%USB\VID_046D&PID_08DA.DeviceDesc%=LogiHub.Dev,usb\vid_046d&pid_08da
+%USB\VID_046D&PID_08DD.DeviceDesc%=LogiHub.Dev,usb\vid_046d&pid_08dd
+
+[Logitech.Section.NTamd64]
+%USB\VID_046D&PID_089D.DeviceDesc%=LogiHub.Dev.NT,usb\vid_046d&pid_089d
+%USB\VID_046D&PID_08D7.DeviceDesc%=LogiHub.Dev.NT,usb\vid_046d&pid_08d7
+%USB\VID_046D&PID_08D8.DeviceDesc%=LogiHub.Dev.NT,usb\vid_046d&pid_08d8
+%USB\VID_046D&PID_08D9.DeviceDesc%=LogiHub.Dev.NT,usb\vid_046d&pid_08d9
+%USB\VID_046D&PID_08DA.DeviceDesc%=LogiHub.Dev.NT,usb\vid_046d&pid_08da
+%USB\VID_046D&PID_08DD.DeviceDesc%=LogiHub.Dev.NT,usb\vid_046d&pid_08dd
+
+[Logitech.Section.NT.6.0]
+%USB\VID_046D&PID_089D.DeviceDesc%=LogiHub.Dev.NT,usb\vid_046d&pid_089d
+%USB\VID_046D&PID_08D7.DeviceDesc%=LogiHub.Dev.NT,usb\vid_046d&pid_08d7
+%USB\VID_046D&PID_08D8.DeviceDesc%=LogiHub.Dev.NT,usb\vid_046d&pid_08d8
+%USB\VID_046D&PID_08D9.DeviceDesc%=LogiHub.Dev.NT,usb\vid_046d&pid_08d9
+%USB\VID_046D&PID_08DA.DeviceDesc%=LogiHub.Dev.NT,usb\vid_046d&pid_08da
+%USB\VID_046D&PID_08DD.DeviceDesc%=LogiHub.Dev.NT,usb\vid_046d&pid_08dd
+
+[Logitech.Section.NTamd64.6.0]
+%USB\VID_046D&PID_089D.DeviceDesc%=LogiHub.Dev.NT,usb\vid_046d&pid_089d
+%USB\VID_046D&PID_08D7.DeviceDesc%=LogiHub.Dev.NT,usb\vid_046d&pid_08d7
+%USB\VID_046D&PID_08D8.DeviceDesc%=LogiHub.Dev.NT,usb\vid_046d&pid_08d8
+%USB\VID_046D&PID_08D9.DeviceDesc%=LogiHub.Dev.NT,usb\vid_046d&pid_08d9
+%USB\VID_046D&PID_08DA.DeviceDesc%=LogiHub.Dev.NT,usb\vid_046d&pid_08da
+%USB\VID_046D&PID_08DD.DeviceDesc%=LogiHub.Dev.NT,usb\vid_046d&pid_08dd
+
+[LogiHub.Dev]
+AddReg=LogiHub.AddReg
+
+[LogiHub.Dev.NT]
+Include=usb.inf
+Needs=Composite.Dev.NT
+
+[LogiHub.Dev.NT.Services]
+Include=usb.inf
+Needs=Composite.Dev.NT.Services
+
+[LogiHub.AddReg]
+HKR,,DevLoader,,*NTKERN
+HKR,,NTMPDriver,,usbhub.sys
+
+[Strings]
+LogitechMfg="Logitech"
+DISK_NAME="Logitech USB Video Camera Disk"
+PVD="Logitech"
+USB\VID_046D&PID_089D.DeviceDesc="Logitech USB Camera (QuickCam E2500)"
+USB\VID_046D&PID_08AF.DeviceDesc="Logitech USB Camera (Easy/Cool)"
+USB\VID_046D&PID_08D7.DeviceDesc="Logitech USB Camera (Communicate STX)"
+USB\VID_046D&PID_08D8.DeviceDesc="Logitech USB Camera (Notebooks Deluxe)"
+USB\VID_046D&PID_08D9.DeviceDesc="Logitech USB Camera (IM/Connect)"
+USB\VID_046D&PID_08DA.DeviceDesc="Logitech USB Camera (QuickCam)"
+USB\VID_046D&PID_08DD.DeviceDesc="Logitech USB Camera (Notebooks)"
+
+[Strings.0411]
+LogitechMfg="Logicool"
+DISK_NAME="Logicool USB Video Camera Disk"
+PVD="Logicool"
+USB\VID_046D&PID_089D.DeviceDesc="Logicool USB Camera (Qcam E2500)"
+USB\VID_046D&PID_08AF.DeviceDesc="Logicool USB Camera (Easy/Cool)"
+USB\VID_046D&PID_08D7.DeviceDesc="Logicool USB Camera (Communicate STX)"
+USB\VID_046D&PID_08D8.DeviceDesc="Logicool USB Camera (Notebooks Deluxe)"
+USB\VID_046D&PID_08D9.DeviceDesc="Logicool USB Camera (IM/Connect)"
+USB\VID_046D&PID_08DA.DeviceDesc="Logicool USB Camera (Qcam)"
+USB\VID_046D&PID_08DD.DeviceDesc="Logicool USB Camera (Notebooks)"
+
+
+

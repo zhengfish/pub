@@ -1,0 +1,1124 @@
+;-------------------------------------------------------
+; File: lELCH64v.inf
+; Logitech Video2 Camera Installation file
+; Copyright (c) 1996-2009 Logitech Inc.
+;-------------------------------------------------------
+
+[Version]
+LayoutFile=Layout.inf, Layout1.inf, Layout2.inf
+signature="$CHICAGO$"
+Class=Image
+ClassGUID={6bdd1fc6-810f-11d0-bec7-08002be2092f}
+Provider=%PVD%
+CatalogFile=lELCH64v.cat
+DriverVer=04/30/2009, 12.0.1278.0
+
+[Manufacturer]
+%LogitechMfg%=Logitech,nt,ntamd64,nt.6.0,ntamd64.6.0
+
+[Logitech]
+%PID_092D_DD%=PID_092D,usb\vid_046d&pid_092d&mi_00
+%PID_092E_DD%=PID_092E,usb\vid_046d&pid_092e&mi_00
+%PID_092F_DD%=PID_092F,usb\vid_046d&pid_092f&mi_00
+
+[Logitech.NT]
+%PID_092D_DD%=PID_092D.XP,usb\vid_046d&pid_092d
+%PID_092E_DD%=PID_092E.XP,usb\vid_046d&pid_092e
+%PID_092F_DD%=PID_092F.XP,usb\vid_046d&pid_092f
+
+[Logitech.NTamd64]
+%PID_092D_DD%=PID_092D.XPAMD64,usb\vid_046d&pid_092d
+%PID_092E_DD%=PID_092E.XPAMD64,usb\vid_046d&pid_092e
+%PID_092F_DD%=PID_092F.XPAMD64,usb\vid_046d&pid_092f
+
+[Logitech.NT.6.0]
+%PID_092D_DD%=PID_092D.VISTA,usb\vid_046d&pid_092d
+%PID_092E_DD%=PID_092E.VISTA,usb\vid_046d&pid_092e
+%PID_092F_DD%=PID_092F.VISTA,usb\vid_046d&pid_092f
+
+[Logitech.NTamd64.6.0]
+%PID_092D_DD%=PID_092D.XPAMD64,usb\vid_046d&pid_092d
+%PID_092E_DD%=PID_092E.XPAMD64,usb\vid_046d&pid_092e
+%PID_092F_DD%=PID_092F.XPAMD64,usb\vid_046d&pid_092f
+
+[SourceDisksNames]
+1=%DISK_NAME%,,,
+
+[SourceDisksFiles]
+LVUI2.dll=1
+LVUI2RC.dll=1
+lvcodec2.dll=1
+lvcod64.dll=1
+lvcoinst.dll=1
+lvcoinst.ini=1
+lvWIAext.dll=1
+LV561AV.sys=1	; Elch 2 video driver
+LV561V64.sys=1  ; Elch 2 video driver for 64 bit
+LVCoin64.dll=1
+LVCoin64.INI=1
+LVUI64.dll=1
+LVUIRC64.dll=1
+WUApp32.exe=1
+WUApp64.exe=1
+
+[DestinationDirs]
+DefaultDestDir=11 ; system
+MISC.CopyFiles=10,TWAIN_32\QuickCam      ; Twain
+CopyCoInstaller=11
+CopyCoInstaller_X64=11
+CopyUserDrv=11
+CopyUserDrvNT=11
+CopyUserDrvNT_AMD64=11
+CopyUserDrvNT_AMD64_WOW6432=10,syswow64
+LVUI.CopyFiles=11
+LVUI.CopyFiles_AMD64=11
+LVUI.CopyFiles_AMD64_WOW6432=10,syswow64
+PID_0928.CopyDrivers=10,system32\drivers
+PID_0928.DelDrivers=10,system32\drivers
+PID_0928.CopyDrivers_AMD64=10,system32\drivers
+PID_0928.DelDrivers_AMD64=10,system32\drivers
+WUAPP32.Files=16427,logishrd
+WUAPP64.Files=16427,logishrd
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[PID_0928.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,LV561AV.SYS
+HKR,,PageOutWhenUnopened,3,00
+HKR,,DontSuspendIfStreamsAreRunning,3,00
+HKR,,HardwareConfig,1,1
+HKR,,USDClass,,"{0527d1d0-88c2-11d2-82c7-00c04f8ec183}"
+HKR,,LVFunctions,0x10001,0x01
+HKR,,LVFeatures,0x10001,0x0
+HKR,,LVCategories,0x10001,0x1110
+HKR,,LVDistribution,0x10001,0x0
+
+[PID_0928.Prop.AddReg]
+HKLM,%DCA500ACONTROL%,"AntiFlicker",0x10001,5
+HKLM,%DCA500ACONTROL%,"SnapMethod",0x10001,0
+HKLM,%DCA500ACONTROL%,"EnableAE",0x10001,02
+HKLM,%DCA500ACONTROL%,"EnableAWB",0x10001,1
+HKLM,%DCA500ACONTROL%,"AEMethod",0x10001,0
+HKLM,%DCA500ACONTROL%,"SensorType",0x10001,0x1
+HKLM,%DCA500ACONTROL%,"Interface",0x10001,0x0
+HKLM,%DCA500ACONTROL%,"Rgain",0x10001,64
+HKLM,%DCA500ACONTROL%,"Grgain",0x10001,64
+HKLM,%DCA500ACONTROL%,"Bgain",0x10001,122
+HKLM,%DCA500ACONTROL%,"Gbgain",0x10001,64
+HKLM,%DCA500ACONTROL%,"Roffset",0x10001,0
+HKLM,%DCA500ACONTROL%,"Groffset",0x10001,0
+HKLM,%DCA500ACONTROL%,"Boffset",0x10001,0
+HKLM,%DCA500ACONTROL%,"Gboffset",0x10001,0
+HKLM,%DCA500ACONTROL%,"DisplayMode",0x10001,0
+HKLM,%DCA500ACONTROL%,"VID",0x10001,256
+HKLM,%DCA500ACONTROL%,"PrvAE",0x10001,2
+HKLM,%DCA500ACONTROL%,"AWBspeed",0x10001,4
+HKLM,%DCA500ACONTROL%,"EnableContrast",0x10001,2
+HKLM,%DCA500ACONTROL%,"Dim",0x10001,0
+HKLM,%DCA500ACONTROL%,"EnableSmooth",0x10001,1
+HKLM,%DCA500ACONTROL%,"BadPxThresholdR",0x10001,60
+HKLM,%DCA500ACONTROL%,"BadPxThresholdB",0x10001,30
+HKLM,%DCA500ACONTROL%,"FixBadpixel",0x10001,1
+HKLM,%DVIDEOPROCAMP%,"Brightness",0x10001,9
+HKLM,%DVIDEOPROCAMP%,"Contrast",0x10001,2
+HKLM,%DVIDEOPROCAMP%,"Hue",0x10001,8
+HKLM,%DVIDEOPROCAMP%,"Saturation",0x10001,4
+HKLM,%DVIDEOPROCAMP%,"Sharpness",0x10001,7
+HKLM,%DVIDEOPROCAMP%,"Gamma",0x10001,2
+HKLM,%DVIDEOPROCAMP%,"Whitebalance",0x10001,1
+HKLM,%DCA500ACONTROL%,"TargetY",0x10001,9
+HKLM,%DCA500ACONTROL%,"YIndex",0x10001,14
+HKLM,%DCA500ACONTROL%,"Compensate_Line",0x10001,1
+HKLM,"%KEY_CONFERENCING%\%PID_0928_DD%",dwImageSize,0x1,40,05,40,06
+HKLM,"%KEY_CONFERENCING%\%PID_0928_DD%",dwStreamingMode,0x1,01,00,00,00
+HKLM,"%KEY_CONFERENCING%\%PID_0928_DD%",dwDialogs,0x1,02,00,00,00
+HKLM,"%KEY_CONFERENCING%\%PID_0928_DD%",dwNumColors,0x1,2C,00,00,00
+HKLM,%DCA500ACONTROL%,"LowLight",0x10001,1
+HKLM,%DCA500ACONTROL%,"ColorBoost",0x10001,0
+
+[PID_0928.CopyDrivers]
+LV561AV.SYS
+
+[PID_0928.CopyDrivers_AMD64]
+LV561V64.sys
+
+[PID_0928.ServiceInstall]
+DisplayName   = %PID_0928_DD%(PID_0928)
+ServiceType   = %SERVICE_KERNEL_DRIVER%
+StartType     = %SERVICE_DEMAND_START%
+ErrorControl  = %SERVICE_ERROR_NORMAL%
+ServiceBinary = %12%\LV561AV.SYS
+
+[PID_092864.ServiceInstall]
+DisplayName   = %PID_0928_DD%(PID_0928)
+ServiceType   = %SERVICE_KERNEL_DRIVER%
+StartType     = %SERVICE_DEMAND_START%
+ErrorControl  = %SERVICE_ERROR_NORMAL%
+ServiceBinary = %12%\LV561V64.SYS
+
+[PID_0928.DelReg]
+
+[PID_0928.DelDrivers]
+LV561AV.SYS
+
+[PID_0928.DelDrivers_AMD64]
+LV561V64.sys
+
+[PID_092D]
+Include=    ks.inf, kscaptur.inf, ksfilter.inf
+Needs=      KS.Registration,KSCAPTUR.Registration
+AddReg=     PID_0928.AddReg,PID_0928.Prop.AddReg,VFW.AddReg, LVCAM2_Prop.AddReg,LVCAM2_Prop_PIN.AddReg,LVCam2_Prop_DEVINFO.AddReg,AppRegister.AddReg,LVSELSUSDisable.AddReg
+UpdateInis= CODECS.I420.UpdateIni, LVfWWDM.UpdateIni
+DelFiles=   PID_0928.DelDrivers
+CopyFiles=  PID_0928.CopyDrivers,MISC.CopyFiles, CopyUserDrv, LVUI.CopyFiles,CopyCoInstaller
+VendorSetup=%lvcoinst32%,SetupEntryPoint PID_092D
+SubClass=StillImage
+DeviceType=3
+DeviceSubType=0x1
+Capabilities=0x31
+DeviceData=QuickCam.DeviceData
+ICMProfiles=%ICM_Prfl%
+DriverVer=04/30/2009, 12.0.1278.0
+
+[PID_092D.NT]
+Include=    ks.inf, kscaptur.inf, ksfilter.inf
+Needs=      KS.Registration,KSCAPTUR.Registration.NT
+DelReg=     PID_0928.DelReg
+AddReg=     FTRep.AddReg, PID_092D.AddReg,PID_0928.Prop.AddReg,PID_092D.AddReg,VFW.AddReg.NT, LVCAM2_Prop.AddReg,LVCAM2_Prop_PIN.AddReg,LVCam2_Prop_DEVINFO.AddReg,AppRegister.AddReg,LVSELSUSDisable.AddReg
+UpdateInis= CODECS.I420.UpdateIni
+DelFiles=   PID_0928.DelDrivers
+CopyFiles=  WUAPP32.Files,PID_0928.CopyDrivers,MISC.CopyFiles, CopyUserDrvNT, LVUI.CopyFiles
+DriverVer=04/30/2009, 12.0.1278.0
+
+[PID_092D.XP]
+Include=    ks.inf, kscaptur.inf, ksfilter.inf
+Needs=      KS.Registration,KSCAPTUR.Registration.NT
+DelReg=     PID_0928.DelReg
+AddReg=     FTRep.AddReg, PID_092D.AddReg,PID_0928.Prop.AddReg,PID_092D.AddReg,VFW.AddReg.NT, LVCAM2_Prop.AddReg,LVCAM2_Prop_PIN.AddReg,LVCam2_Prop_DEVINFO.AddReg,AppRegister.AddReg,LVSELSUSDisable.AddReg
+UpdateInis= CODECS.I420.UpdateIni
+DelFiles=   PID_0928.DelDrivers
+CopyFiles=  WUAPP32.Files,PID_0928.CopyDrivers,MISC.CopyFiles, CopyUserDrvNT, LVUI.CopyFiles
+SubClass=StillImage
+DeviceType=3
+DeviceSubType=0x1
+Capabilities=0x31
+DeviceData=QuickCam.DeviceData
+ICMProfiles=%ICM_Prfl%
+DriverVer=04/30/2009, 12.0.1278.0
+
+[PID_092D.VISTA]
+Include=    ks.inf, kscaptur.inf
+Needs=      KS.Registration,KSCAPTUR.Registration.NT
+DelReg=     PID_0928.DelReg
+AddReg=     FTRep.AddReg, PID_092D.AddReg,PID_0928.Prop.AddReg,PID_092D.AddReg,VFW.AddReg.NT, LVCAM2_Prop.AddReg,LVCAM2_Prop_PIN.AddReg,LVCam2_Prop_DEVINFO.AddReg,AppRegister.AddReg,LVSELSUSDisable.AddReg
+UpdateInis= CODECS.I420.UpdateIni
+DelFiles=   PID_0928.DelDrivers
+CopyFiles=  WUAPP32.Files,PID_0928.CopyDrivers,MISC.CopyFiles, CopyUserDrvNT, LVUI.CopyFiles
+SubClass=StillImage
+DeviceType=3
+DeviceSubType=0x1
+Capabilities=0x31
+DeviceData=QuickCam.DeviceData
+ICMProfiles=%ICM_Prfl%
+DriverVer=04/30/2009, 12.0.1278.0
+
+[PID_092D.XPAMD64]
+Include=    ks.inf, kscaptur.inf, ksfilter.inf
+Needs=      KS.Registration,KSCAPTUR.Registration.NT
+DelReg=     PID_0928.DelReg
+AddReg=     FTRep.AddReg, PID_092D_X64.AddReg,PID_0928.Prop.AddReg,PID_092D.AddReg,VFW.AddReg.NT,LVCAM2_Prop_X64.AddReg,LVCAM2_Prop_AMD64.AddReg,LVCAM2_Prop_PIN_X64.AddReg,LVCam2_Prop_DEVINFO_x64.AddReg,LVCam2_Prop_PIN_AMD64.AddReg,LVCam2_Prop_DEVINF_AMD64.AddReg,AppRegister.AddReg,LVSELSUSDisable.AddReg
+UpdateInis= CODECS.I420.UpdateIni
+DelFiles=   PID_0928.DelDrivers_AMD64
+CopyFiles=  WUAPP64.Files,PID_0928.CopyDrivers_AMD64,MISC.CopyFiles,CopyUserDrvNT_AMD64,CopyUserDrvNT_AMD64_WOW6432,LVUI.CopyFiles_AMD64,LVUI.CopyFiles_AMD64_WOW6432
+SubClass=StillImage
+DeviceType=3
+DeviceSubType=0x1
+Capabilities=0x31
+DeviceData=QuickCam.DeviceData
+ICMProfiles=%ICM_Prfl%
+DriverVer=04/30/2009, 12.0.1278.0
+
+[PID_092D.NT.CoInstallers]
+CopyFiles=CopyCoInstaller
+AddReg=CoInstaller.AddReg
+
+[PID_092D.XP.CoInstallers]
+CopyFiles=CopyCoInstaller
+AddReg=CoInstaller.AddReg
+
+[PID_092D.VISTA.CoInstallers]
+CopyFiles=CopyCoInstaller
+AddReg=CoInstaller.AddReg
+
+[PID_092D.XPAMD64.CoInstallers]
+CopyFiles=CopyCoInstaller_X64
+AddReg=CoInstaller_X64.AddReg
+
+[PID_092D.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,LV561AV.SYS
+HKR,,PageOutWhenUnopened,3,00
+HKR,,DontSuspendIfStreamsAreRunning,3,00
+HKR,,HardwareConfig,1,1
+HKR,,USDClass,,"{0527d1d0-88c2-11d2-82c7-00c04f8ec183}"
+HKR,,LVFunctions,0x10001,0x01
+HKR,,LVFeatures,0x10001,0x0
+HKR,,LVCategories,0x10001,0x2110
+HKR,,LVDistribution,0x10001,0x02
+HKR,,EnumPropPages32,,"Lvui2.dll,EnumPropPages"
+
+[PID_092D_X64.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,LV561V64.SYS
+HKR,,PageOutWhenUnopened,3,00
+HKR,,DontSuspendIfStreamsAreRunning,3,00
+HKR,,HardwareConfig,1,1
+HKR,,USDClass,,"{0527d1d0-88c2-11d2-82c7-00c04f8ec183}"
+HKR,,LVFunctions,0x10001,0x01
+HKR,,LVFeatures,0x10001,0x0
+HKR,,LVCategories,0x10001,0x2110
+HKR,,LVDistribution,0x10001,0x02
+HKR,,EnumPropPages32,,"Lvui64.dll,EnumPropPages"
+
+[PID_092D.NT.Interfaces]
+AddInterface=%KSCATEGORY_CAPTURE%,%FILTER_NAME%,PID_092D.VideoCapture
+
+[PID_092D.XP.Interfaces]
+AddInterface=%KSCATEGORY_CAPTURE%,%FILTER_NAME%,PID_092D.VideoCapture
+
+[PID_092D.VISTA.Interfaces]
+AddInterface=%KSCATEGORY_CAPTURE%,%FILTER_NAME%,PID_092D.VideoCapture
+
+[PID_092D.XPAMD64.Interfaces]
+AddInterface=%KSCATEGORY_CAPTURE%,%FILTER_NAME%,PID_092D.VideoCapture.X64
+
+[PID_092D.VideoCapture]
+AddReg=PID_092D.VideoCapture.AddReg
+
+[PID_092D.VideoCapture.AddReg]
+HKR,,CLSID,,%ProxyVCap.CLSID%
+HKR,,FriendlyName,,%PID_092D_DD%
+HKR,,ExtensionDLL,,%ExtensionDLL%
+HKR,,RTCFlags,0x00010001,0x00000010
+HKR,PageAliases,"{71F96467-78F3-11d0-A18C-00A0C9118956}",1,0C,68,91,66, 1C,8B, EC,49, 0x92, 0x54, 0x8F, 0xFB, 0xE4, 0x71, 0xC2, 0x56
+HKR,PageAliases,"{71F96464-78F3-11d0-A18C-00A0C9118956}",1,21,E8,C2,3D, 13,47, d2,11, 0xba, 0x41, 0x0, 0xa0, 0xc9, 0xd, 0x2b, 0x5
+
+[PID_092D.VideoCapture.X64]
+AddReg=PID_092D.VidCap.AddReg.X64
+
+[PID_092D.VidCap.AddReg.X64]
+HKR,,CLSID,,%ProxyVCap.CLSID%
+HKR,,FriendlyName,,%PID_092D_DD%
+HKR,,ExtensionDLL,,%ExtensionDLL64%
+HKR,,RTCFlags,0x00010001,0x00000010
+HKR,PageAliases,"{71F96467-78F3-11d0-A18C-00A0C9118956}",1,0C,68,91,66, 1C,8B, EC,49, 0x92, 0x54, 0x8F, 0xFB, 0xE4, 0x71, 0xC2, 0x56
+HKR,PageAliases,"{71F96464-78F3-11d0-A18C-00A0C9118956}",1,21,E8,C2,3D, 13,47, d2,11, 0xba, 0x41, 0x0, 0xa0, 0xc9, 0xd, 0x2b, 0x5
+
+[PID_092D.NT.Services]
+AddService = PID_0928,0x00000002,PID_0928.ServiceInstall
+
+[PID_092D.XP.Services]
+AddService = PID_0928,0x00000002,PID_0928.ServiceInstall
+
+[PID_092D.VISTA.Services]
+AddService = PID_0928,0x00000002,PID_0928.ServiceInstall
+
+[PID_092D.XPAMD64.Services]
+AddService = PID_0928,0x00000002,PID_092864.ServiceInstall
+
+[PID_092E]
+Include=    ks.inf, kscaptur.inf, ksfilter.inf
+Needs=      KS.Registration,KSCAPTUR.Registration
+AddReg=     PID_0928.AddReg,PID_0928.Prop.AddReg,VFW.AddReg, LVCAM2_Prop.AddReg,LVCAM2_Prop_PIN.AddReg,LVCam2_Prop_DEVINFO.AddReg,AppRegister.AddReg,LVSELSUSDisable.AddReg
+UpdateInis= CODECS.I420.UpdateIni, LVfWWDM.UpdateIni
+DelFiles=   PID_0928.DelDrivers
+CopyFiles=  PID_0928.CopyDrivers,MISC.CopyFiles, CopyUserDrv, LVUI.CopyFiles,CopyCoInstaller
+VendorSetup=%lvcoinst32%,SetupEntryPoint PID_092E
+SubClass=StillImage
+DeviceType=3
+DeviceSubType=0x1
+Capabilities=0x31
+DeviceData=QuickCam.DeviceData
+ICMProfiles=%ICM_Prfl%
+DriverVer=04/30/2009, 12.0.1278.0
+
+[PID_092E.NT]
+Include=    ks.inf, kscaptur.inf, ksfilter.inf
+Needs=      KS.Registration,KSCAPTUR.Registration.NT
+DelReg=     PID_0928.DelReg
+AddReg=     FTRep.AddReg, PID_092E.AddReg,PID_0928.Prop.AddReg,PID_092E.AddReg,VFW.AddReg.NT, LVCAM2_Prop.AddReg,LVCAM2_Prop_PIN.AddReg,LVCam2_Prop_DEVINFO.AddReg,AppRegister.AddReg,LVSELSUSDisable.AddReg
+UpdateInis= CODECS.I420.UpdateIni
+DelFiles=   PID_0928.DelDrivers
+CopyFiles=  WUAPP32.Files,PID_0928.CopyDrivers,MISC.CopyFiles, CopyUserDrvNT, LVUI.CopyFiles
+DriverVer=04/30/2009, 12.0.1278.0
+
+[PID_092E.XP]
+Include=    ks.inf, kscaptur.inf, ksfilter.inf
+Needs=      KS.Registration,KSCAPTUR.Registration.NT
+DelReg=     PID_0928.DelReg
+AddReg=     FTRep.AddReg, PID_092E.AddReg,PID_0928.Prop.AddReg,PID_092E.AddReg,VFW.AddReg.NT, LVCAM2_Prop.AddReg,LVCAM2_Prop_PIN.AddReg,LVCam2_Prop_DEVINFO.AddReg,AppRegister.AddReg,LVSELSUSDisable.AddReg
+UpdateInis= CODECS.I420.UpdateIni
+DelFiles=   PID_0928.DelDrivers
+CopyFiles=  WUAPP32.Files,PID_0928.CopyDrivers,MISC.CopyFiles, CopyUserDrvNT, LVUI.CopyFiles
+SubClass=StillImage
+DeviceType=3
+DeviceSubType=0x1
+Capabilities=0x31
+DeviceData=QuickCam.DeviceData
+ICMProfiles=%ICM_Prfl%
+DriverVer=04/30/2009, 12.0.1278.0
+
+[PID_092E.VISTA]
+Include=    ks.inf, kscaptur.inf
+Needs=      KS.Registration,KSCAPTUR.Registration.NT
+DelReg=     PID_0928.DelReg
+AddReg=     FTRep.AddReg, PID_092E.AddReg,PID_0928.Prop.AddReg,PID_092E.AddReg,VFW.AddReg.NT, LVCAM2_Prop.AddReg,LVCAM2_Prop_PIN.AddReg,LVCam2_Prop_DEVINFO.AddReg,AppRegister.AddReg,LVSELSUSDisable.AddReg
+UpdateInis= CODECS.I420.UpdateIni
+DelFiles=   PID_0928.DelDrivers
+CopyFiles=  WUAPP32.Files,PID_0928.CopyDrivers,MISC.CopyFiles, CopyUserDrvNT, LVUI.CopyFiles
+SubClass=StillImage
+DeviceType=3
+DeviceSubType=0x1
+Capabilities=0x31
+DeviceData=QuickCam.DeviceData
+ICMProfiles=%ICM_Prfl%
+DriverVer=04/30/2009, 12.0.1278.0
+
+[PID_092E.XPAMD64]
+Include=    ks.inf, kscaptur.inf, ksfilter.inf
+Needs=      KS.Registration,KSCAPTUR.Registration.NT
+DelReg=     PID_0928.DelReg
+AddReg=     FTRep.AddReg, PID_092E_X64.AddReg, PID_0928.Prop.AddReg, PID_092E.AddReg, VFW.AddReg.NT,LVCAM2_Prop_X64.AddReg,LVCAM2_Prop_AMD64.AddReg,LVCAM2_Prop_PIN_X64.AddReg,LVCam2_Prop_DEVINFO_x64.AddReg,LVCam2_Prop_PIN_AMD64.AddReg,LVCam2_Prop_DEVINF_AMD64.AddReg,AppRegister.AddReg,LVSELSUSDisable.AddReg
+UpdateInis= CODECS.I420.UpdateIni
+DelFiles=   PID_0928.DelDrivers_AMD64
+CopyFiles=  WUAPP64.Files,PID_0928.CopyDrivers_AMD64,MISC.CopyFiles,CopyUserDrvNT_AMD64,CopyUserDrvNT_AMD64_WOW6432,LVUI.CopyFiles_AMD64,LVUI.CopyFiles_AMD64_WOW6432
+DeviceType=3
+DeviceSubType=0x1
+Capabilities=0x31
+DeviceData=QuickCam.DeviceData
+ICMProfiles=%ICM_Prfl%
+DriverVer=04/30/2009, 12.0.1278.0
+
+[PID_092E.NT.CoInstallers]
+CopyFiles=CopyCoInstaller
+AddReg=CoInstaller.AddReg
+
+[PID_092E.XP.CoInstallers]
+CopyFiles=CopyCoInstaller
+AddReg=CoInstaller.AddReg
+
+[PID_092E.VISTA.CoInstallers]
+CopyFiles=CopyCoInstaller
+AddReg=CoInstaller.AddReg
+
+[PID_092E.XPAMD64.CoInstallers]
+CopyFiles=CopyCoInstaller_X64
+AddReg=CoInstaller_X64.AddReg
+
+[PID_092E.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,LV561AV.SYS
+HKR,,PageOutWhenUnopened,3,00
+HKR,,DontSuspendIfStreamsAreRunning,3,00
+HKR,,HardwareConfig,1,1
+HKR,,USDClass,,"{0527d1d0-88c2-11d2-82c7-00c04f8ec183}"
+HKR,,LVFunctions,0x10001,0x01
+HKR,,LVFeatures,0x10001,0x0
+HKR,,LVCategories,0x10001,0x2110
+HKR,,LVDistribution,0x10001,0x02
+HKR,,EnumPropPages32,,"Lvui2.dll,EnumPropPages"
+
+[PID_092E_X64.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,LV561V64.SYS
+HKR,,PageOutWhenUnopened,3,00
+HKR,,DontSuspendIfStreamsAreRunning,3,00
+HKR,,HardwareConfig,1,1
+HKR,,USDClass,,"{0527d1d0-88c2-11d2-82c7-00c04f8ec183}"
+HKR,,LVFunctions,0x10001,0x01
+HKR,,LVFeatures,0x10001,0x0
+HKR,,LVCategories,0x10001,0x2110
+HKR,,LVDistribution,0x10001,0x02
+HKR,,EnumPropPages32,,"Lvui64.dll,EnumPropPages"
+
+[PID_092E.NT.Interfaces]
+AddInterface=%KSCATEGORY_CAPTURE%,%FILTER_NAME%,PID_092E.VideoCapture
+
+[PID_092E.XP.Interfaces]
+AddInterface=%KSCATEGORY_CAPTURE%,%FILTER_NAME%,PID_092E.VideoCapture
+
+[PID_092E.VISTA.Interfaces]
+AddInterface=%KSCATEGORY_CAPTURE%,%FILTER_NAME%,PID_092E.VideoCapture
+
+[PID_092E.XPAMD64.Interfaces]
+AddInterface=%KSCATEGORY_CAPTURE%,%FILTER_NAME%,PID_092E.VideoCapture.X64
+
+[PID_092E.VideoCapture]
+AddReg=PID_092E.VideoCapture.AddReg
+
+[PID_092E.VideoCapture.AddReg]
+HKR,,CLSID,,%ProxyVCap.CLSID%
+HKR,,FriendlyName,,%PID_092E_DD%
+HKR,,ExtensionDLL,,%ExtensionDLL%
+HKR,,RTCFlags,0x00010001,0x00000010
+HKR,PageAliases,"{71F96467-78F3-11d0-A18C-00A0C9118956}",1,0C,68,91,66, 1C,8B, EC,49, 0x92, 0x54, 0x8F, 0xFB, 0xE4, 0x71, 0xC2, 0x56
+HKR,PageAliases,"{71F96464-78F3-11d0-A18C-00A0C9118956}",1,21,E8,C2,3D, 13,47, d2,11, 0xba, 0x41, 0x0, 0xa0, 0xc9, 0xd, 0x2b, 0x5
+
+[PID_092E.VideoCapture.X64]
+AddReg=PID_092E.VidCap.AddReg.X64
+
+[PID_092E.VidCap.AddReg.X64]
+HKR,,CLSID,,%ProxyVCap.CLSID%
+HKR,,FriendlyName,,%PID_092E_DD%
+HKR,,ExtensionDLL,,%ExtensionDLL64%
+HKR,,RTCFlags,0x00010001,0x00000010
+HKR,PageAliases,"{71F96467-78F3-11d0-A18C-00A0C9118956}",1,0C,68,91,66, 1C,8B, EC,49, 0x92, 0x54, 0x8F, 0xFB, 0xE4, 0x71, 0xC2, 0x56
+HKR,PageAliases,"{71F96464-78F3-11d0-A18C-00A0C9118956}",1,21,E8,C2,3D, 13,47, d2,11, 0xba, 0x41, 0x0, 0xa0, 0xc9, 0xd, 0x2b, 0x5
+
+[PID_092E.NT.Services]
+AddService = PID_0928,0x00000002,PID_0928.ServiceInstall
+
+[PID_092E.XP.Services]
+AddService = PID_0928,0x00000002,PID_0928.ServiceInstall
+
+[PID_092E.VISTA.Services]
+AddService = PID_0928,0x00000002,PID_0928.ServiceInstall
+
+[PID_092E.XPAMD64.Services]
+AddService = PID_0928,0x00000002,PID_092864.ServiceInstall
+
+[PID_092F]
+Include=    ks.inf, kscaptur.inf, ksfilter.inf
+Needs=      KS.Registration,KSCAPTUR.Registration
+AddReg=     PID_0928.AddReg,PID_0928.Prop.AddReg,VFW.AddReg, LVCAM2_Prop.AddReg,LVCAM2_Prop_PIN.AddReg,LVCam2_Prop_DEVINFO.AddReg,AppRegister.AddReg,LVSELSUSDisable.AddReg
+UpdateInis= CODECS.I420.UpdateIni, LVfWWDM.UpdateIni
+DelFiles=   PID_0928.DelDrivers
+CopyFiles=  PID_0928.CopyDrivers,MISC.CopyFiles, CopyUserDrv, LVUI.CopyFiles,CopyCoInstaller
+VendorSetup=%lvcoinst32%,SetupEntryPoint PID_092F
+SubClass=StillImage
+DeviceType=3
+DeviceSubType=0x1
+Capabilities=0x31
+DeviceData=QuickCam.DeviceData
+ICMProfiles=%ICM_Prfl%
+DriverVer=04/30/2009, 12.0.1278.0
+
+[PID_092F.NT]
+Include=    ks.inf, kscaptur.inf, ksfilter.inf
+Needs=      KS.Registration,KSCAPTUR.Registration.NT
+DelReg=     PID_0928.DelReg
+AddReg=     FTRep.AddReg, PID_092F.AddReg,PID_0928.Prop.AddReg,PID_092F.AddReg,VFW.AddReg.NT, LVCAM2_Prop.AddReg,LVCAM2_Prop_PIN.AddReg,LVCam2_Prop_DEVINFO.AddReg,AppRegister.AddReg,LVSELSUSDisable.AddReg
+UpdateInis= CODECS.I420.UpdateIni
+DelFiles=   PID_0928.DelDrivers
+CopyFiles=  WUAPP32.Files,PID_0928.CopyDrivers,MISC.CopyFiles, CopyUserDrvNT, LVUI.CopyFiles
+DriverVer=04/30/2009, 12.0.1278.0
+
+[PID_092F.XP]
+Include=    ks.inf, kscaptur.inf, ksfilter.inf
+Needs=      KS.Registration,KSCAPTUR.Registration.NT
+DelReg=     PID_0928.DelReg
+AddReg=     FTRep.AddReg, PID_092F.AddReg,PID_0928.Prop.AddReg,PID_092F.AddReg,VFW.AddReg.NT, LVCAM2_Prop.AddReg,LVCAM2_Prop_PIN.AddReg,LVCam2_Prop_DEVINFO.AddReg,AppRegister.AddReg,LVSELSUSDisable.AddReg
+UpdateInis= CODECS.I420.UpdateIni
+DelFiles=   PID_0928.DelDrivers
+CopyFiles=  WUAPP32.Files,PID_0928.CopyDrivers,MISC.CopyFiles, CopyUserDrvNT, LVUI.CopyFiles
+SubClass=StillImage
+DeviceType=3
+DeviceSubType=0x1
+Capabilities=0x31
+DeviceData=QuickCam.DeviceData
+ICMProfiles=%ICM_Prfl%
+DriverVer=04/30/2009, 12.0.1278.0
+
+[PID_092F.VISTA]
+Include=    ks.inf, kscaptur.inf
+Needs=      KS.Registration,KSCAPTUR.Registration.NT
+DelReg=     PID_0928.DelReg
+AddReg=     FTRep.AddReg, PID_092F.AddReg,PID_0928.Prop.AddReg,PID_092F.AddReg,VFW.AddReg.NT, LVCAM2_Prop.AddReg,LVCAM2_Prop_PIN.AddReg,LVCam2_Prop_DEVINFO.AddReg,AppRegister.AddReg,LVSELSUSDisable.AddReg
+UpdateInis= CODECS.I420.UpdateIni
+DelFiles=   PID_0928.DelDrivers
+CopyFiles=  WUAPP32.Files,PID_0928.CopyDrivers,MISC.CopyFiles, CopyUserDrvNT, LVUI.CopyFiles
+SubClass=StillImage
+DeviceType=3
+DeviceSubType=0x1
+Capabilities=0x31
+DeviceData=QuickCam.DeviceData
+ICMProfiles=%ICM_Prfl%
+DriverVer=04/30/2009, 12.0.1278.0
+
+[PID_092F.XPAMD64]
+Include=    ks.inf, kscaptur.inf, ksfilter.inf
+Needs=      KS.Registration,KSCAPTUR.Registration.NT
+DelReg=     PID_0928.DelReg
+AddReg=     FTRep.AddReg, PID_092F_X64.AddReg,PID_0928.Prop.AddReg,PID_092F.AddReg,VFW.AddReg.NT,LVCAM2_Prop_X64.AddReg,LVCAM2_Prop_AMD64.AddReg,LVCAM2_Prop_PIN_X64.AddReg,LVCam2_Prop_DEVINFO_x64.AddReg,LVCam2_Prop_PIN_AMD64.AddReg,LVCam2_Prop_DEVINF_AMD64.AddReg,AppRegister.AddReg,LVSELSUSDisable.AddReg
+UpdateInis= CODECS.I420.UpdateIni
+DelFiles=   PID_0928.DelDrivers_AMD64
+CopyFiles=  WUAPP64.Files,PID_0928.CopyDrivers_AMD64,MISC.CopyFiles,CopyUserDrvNT_AMD64,CopyUserDrvNT_AMD64_WOW6432,LVUI.CopyFiles_AMD64,LVUI.CopyFiles_AMD64_WOW6432
+SubClass=StillImage
+DeviceType=3
+DeviceSubType=0x1
+Capabilities=0x31
+DeviceData=QuickCam.DeviceData
+ICMProfiles=%ICM_Prfl%
+DriverVer=04/30/2009, 12.0.1278.0
+
+[PID_092F.NT.CoInstallers]
+CopyFiles=CopyCoInstaller
+AddReg=CoInstaller.AddReg
+
+[PID_092F.XP.CoInstallers]
+CopyFiles=CopyCoInstaller
+AddReg=CoInstaller.AddReg
+
+[PID_092F.VISTA.CoInstallers]
+CopyFiles=CopyCoInstaller
+AddReg=CoInstaller.AddReg
+
+[PID_092F.XPAMD64.CoInstallers]
+CopyFiles=CopyCoInstaller_X64
+AddReg=CoInstaller_X64.AddReg
+
+[PID_092F.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,LV561AV.SYS
+HKR,,PageOutWhenUnopened,3,00
+HKR,,DontSuspendIfStreamsAreRunning,3,00
+HKR,,HardwareConfig,1,1
+HKR,,USDClass,,"{0527d1d0-88c2-11d2-82c7-00c04f8ec183}"
+HKR,,LVFunctions,0x10001,0x01
+HKR,,LVFeatures,0x10001,0x0
+HKR,,LVCategories,0x10001,0x2110
+HKR,,LVDistribution,0x10001,0x02
+HKR,,EnumPropPages32,,"Lvui2.dll,EnumPropPages"
+
+[PID_092F_X64.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,LV561V64.SYS
+HKR,,PageOutWhenUnopened,3,00
+HKR,,DontSuspendIfStreamsAreRunning,3,00
+HKR,,HardwareConfig,1,1
+HKR,,USDClass,,"{0527d1d0-88c2-11d2-82c7-00c04f8ec183}"
+HKR,,LVFunctions,0x10001,0x01
+HKR,,LVFeatures,0x10001,0x0
+HKR,,LVCategories,0x10001,0x2110
+HKR,,LVDistribution,0x10001,0x02
+HKR,,EnumPropPages32,,"Lvui64.dll,EnumPropPages"
+
+[PID_092F.NT.Interfaces]
+AddInterface=%KSCATEGORY_CAPTURE%,%FILTER_NAME%,PID_092F.VideoCapture
+
+[PID_092F.XP.Interfaces]
+AddInterface=%KSCATEGORY_CAPTURE%,%FILTER_NAME%,PID_092F.VideoCapture
+
+[PID_092F.VISTA.Interfaces]
+AddInterface=%KSCATEGORY_CAPTURE%,%FILTER_NAME%,PID_092F.VideoCapture
+
+[PID_092F.XPAMD64.Interfaces]
+AddInterface=%KSCATEGORY_CAPTURE%,%FILTER_NAME%,PID_092F.VideoCapture.X64
+
+[PID_092F.VideoCapture]
+AddReg=PID_092F.VideoCapture.AddReg
+
+[PID_092F.VideoCapture.AddReg]
+HKR,,CLSID,,%ProxyVCap.CLSID%
+HKR,,FriendlyName,,%PID_092F_DD%
+HKR,,ExtensionDLL,,%ExtensionDLL%
+HKR,,RTCFlags,0x00010001,0x00000010
+HKR,PageAliases,"{71F96467-78F3-11d0-A18C-00A0C9118956}",1,0C,68,91,66, 1C,8B, EC,49, 0x92, 0x54, 0x8F, 0xFB, 0xE4, 0x71, 0xC2, 0x56
+HKR,PageAliases,"{71F96464-78F3-11d0-A18C-00A0C9118956}",1,21,E8,C2,3D, 13,47, d2,11, 0xba, 0x41, 0x0, 0xa0, 0xc9, 0xd, 0x2b, 0x5
+
+[PID_092F.VideoCapture.X64]
+AddReg=PID_092F.VidCap.AddReg.X64
+
+[PID_092F.VidCap.AddReg.X64]
+HKR,,CLSID,,%ProxyVCap.CLSID%
+HKR,,FriendlyName,,%PID_092F_DD%
+HKR,,ExtensionDLL,,%ExtensionDLL64%
+HKR,,RTCFlags,0x00010001,0x00000010
+HKR,PageAliases,"{71F96467-78F3-11d0-A18C-00A0C9118956}",1,0C,68,91,66, 1C,8B, EC,49, 0x92, 0x54, 0x8F, 0xFB, 0xE4, 0x71, 0xC2, 0x56
+HKR,PageAliases,"{71F96464-78F3-11d0-A18C-00A0C9118956}",1,21,E8,C2,3D, 13,47, d2,11, 0xba, 0x41, 0x0, 0xa0, 0xc9, 0xd, 0x2b, 0x5
+
+[PID_092F.NT.Services]
+AddService = PID_0928,0x00000002,PID_0928.ServiceInstall
+
+[PID_092F.XP.Services]
+AddService = PID_0928,0x00000002,PID_0928.ServiceInstall
+
+[PID_092F.VISTA.Services]
+AddService = PID_0928,0x00000002,PID_0928.ServiceInstall
+
+[PID_092F.XPAMD64.Services]
+AddService = PID_0928,0x00000002,PID_092864.ServiceInstall
+
+[LVSELSUSDisable.AddReg]
+HKR,,LVPowSaveDisable,0x10001,0x1 ; Disable power save mechanism
+HKR,,LVSSDisable,0x00010001,0x1   ; Disable selective suspend
+HKR,,LVSelSusInterfaceGUID,,"{FA33C4CD-7C6D-4a5d-8AD4-CFB86D02AE9E}"
+
+[CoInstaller.AddReg]
+HKR,,CoInstallers32,0x00010000,"%lvcoinst32%,LvCoInstaller"
+
+[CoInstaller_X64.AddReg]
+HKR,,CoInstallers32,0x00010000,"%lvcoinst64%,LvCoInstaller"
+
+[QuickCam.DeviceData]
+Server=local
+UI DLL=sti.dll
+UI Class ID={7FACF624-63F9-4fe9-81F1-C65CBDA79305}
+
+[AppRegister.AddReg]
+HKLM,%REG_APPS%"\Arrival\890","ApplicationPath",,%DualCamApp%
+HKLM,%REG_APPS%"\Arrival\900","ApplicationPath",,%DualCamApp%
+HKLM,%REG_APPS%"\Arrival\901","ApplicationPath",,%DualCamApp%
+HKLM,%REG_APPS%"\Arrival\960","ApplicationPath",,%DualCamApp%
+HKLM,%REG_APPS%"\Arrival\905","ApplicationPath",,%DualCamApp%
+HKLM,%REG_APPS%"\Arrival\905","FirstTime",0x10001,0x1
+HKLM,%REG_APPS%"\QuickSync","ApplicationPath",,%QuickSyncApp%
+HKLM,%REG_APPS%"\QuickSync","ApplicationArgument",,%QuickSyncArg%
+
+[VFW.AddReg.NT]
+HKLM,%QC_DRVS%,"OEM",,%PVD%
+HKLM,%QC_DRVS%,"VFW",,%LVfWWDMDriverDesc%
+HKLM,%MMDrivers%,MSVideo,,vfwwdm32.dll
+
+[LVfWWDM.UpdateIni]
+system.ini,drivers,,"MSVideo.VfWWDM=vfwwdm.drv"
+
+[CODECS.I420.UpdateIni]
+system.ini,drivers32,,"VIDC.I420=lvcodec2.dll"
+
+[CopyUserDrv]
+lvcodec2.dll			; Don't replace if older
+
+[CopyUserDrvNT]
+lvcodec2.dll
+
+[CopyUserDrvNT_AMD64_WOW6432]
+lvcodec2.dll
+
+[CopyUserDrvNT_AMD64]
+lvcod64.dll
+
+[LVUI.CopyFiles]
+LVUI2.dll
+LVUI2RC.dll
+
+[LVUI.CopyFiles_AMD64]
+LVUI64.dll
+LVUIRC64.dll
+
+[LVUI.CopyFiles_AMD64_WOW6432]
+LVUI2.dll
+LVUI2RC.dll
+
+[MISC.CopyFiles]
+lvWIAext.dll
+
+[CopyCoInstaller]
+%lvcoinst32%,lvcoinst.dll
+lvcoinst.ini
+
+[CopyCoInstaller_X64]
+%lvcoinst64%,lvcoin64.dll
+lvcoin64.ini
+
+[LVCAM2_Prop_PIN.AddReg]
+HKCR,CLSID\%DS_PinPropertyPage.CLSID%,,,%CLSID_PP_DS_PIN%
+HKCR,CLSID\%DS_PinPropertyPage.CLSID%\InprocServer32,,,%11%\%ExtensionDLL%
+HKCR,CLSID\%DS_PinPropertyPage.CLSID%\InprocServer32,ThreadingModel,,Both
+
+[LVCam2_Prop_DEVINFO.AddReg]
+HKLM,%MedSets%\%CLSID_PropSet_LVCam_PPages%
+HKLM,%MedSets%\%CLSID_PropSet_LVCam_PPages%\PropertyPages
+HKLM,%MedSets%\%CLSID_PropSet_LVCam_PPages%\PropertyPages\%CLSID_PP_DEVICE_INFORMATION%,,,%CLSID_PP_DEVICE_INFORMATION_Desc%
+HKCR,CLSID\%CLSID_PP_DEVICE_INFORMATION%,,,%CLSID_PP_DEVICE_INFORMATION_Desc%
+HKCR,CLSID\%CLSID_PP_DEVICE_INFORMATION%\InprocServer32,,,%11%\%ExtensionDLL%
+HKCR,CLSID\%CLSID_PP_DEVICE_INFORMATION%\InprocServer32,ThreadingModel,,Both
+
+[LVCAM2_Prop_PIN_X64.AddReg]
+HKCR,CLSID\%DS_PinPropertyPage.CLSID%,,,%CLSID_PP_DS_PIN%
+HKCR,CLSID\%DS_PinPropertyPage.CLSID%\InprocServer32,,,%11%\%ExtensionDLL64%
+HKCR,CLSID\%DS_PinPropertyPage.CLSID%\InprocServer32,ThreadingModel,,Both
+
+[LVCam2_Prop_DEVINFO_x64.AddReg]
+HKLM,%MedSets%\%CLSID_PropSet_LVCam_PPages%
+HKLM,%MedSets%\%CLSID_PropSet_LVCam_PPages%\PropertyPages
+HKLM,%MedSets%\%CLSID_PropSet_LVCam_PPages%\PropertyPages\%CLSID_PP_DEVICE_INFORMATION%,,,%CLSID_PP_DEVICE_INFORMATION_Desc%
+HKCR,CLSID\%CLSID_PP_DEVICE_INFORMATION%,,,%CLSID_PP_DEVICE_INFORMATION_Desc%
+HKCR,CLSID\%CLSID_PP_DEVICE_INFORMATION%\InprocServer32,,,%11%\%ExtensionDLL64%
+HKCR,CLSID\%CLSID_PP_DEVICE_INFORMATION%\InprocServer32,ThreadingModel,,Both
+
+[LVCam2_Prop_DEVINF_AMD64.AddReg]
+HKLM,%AMD64_WOW6432CLSIDNODE%\%CLSID_PP_DEVICE_INFORMATION%,,,%CLSID_PP_DEVICE_INFORMATION_Desc%
+HKLM,%AMD64_WOW6432CLSIDNODE%\%CLSID_PP_DEVICE_INFORMATION%\InprocServer32,,,%11%\%ExtensionDLL%
+HKLM,%AMD64_WOW6432CLSIDNODE%\%CLSID_PP_DEVICE_INFORMATION%\InprocServer32,ThreadingModel,,Both
+
+[LVCam2_Prop_PIN_AMD64.AddReg]
+HKLM,%AMD64_WOW6432CLSIDNODE%\%DS_PinPropertyPage.CLSID%,,,%CLSID_PP_DEVICE_INFORMATION_Desc%
+HKLM,%AMD64_WOW6432CLSIDNODE%\%DS_PinPropertyPage.CLSID%\InprocServer32,,,%11%\%ExtensionDLL%
+HKLM,%AMD64_WOW6432CLSIDNODE%\%DS_PinPropertyPage.CLSID%\InprocServer32,ThreadingModel,,Both
+
+[LVCAM2_Prop.AddReg]
+HKLM,%MedSets%\%CLSID_PropSet_LVCam_PPages%
+HKLM,%MedSets%\%CLSID_PropSet_LVCam_PPages%\PropertyPages
+HKCR,CLSID\%CLSID_PP_Advanced%,,,%CLSID_PP_Advanced_Desc%
+HKCR,CLSID\%CLSID_PP_Advanced%\InprocServer32,,,%11%\%ExtensionDLL%
+HKCR,CLSID\%CLSID_PP_Advanced%\InprocServer32,ThreadingModel,,Both
+HKLM,%MedSets%\%CLSID_PropSet_LVCam_PPages%\PropertyPages\%CLSID_PP_Advanced%,,,%CLSID_PP_Advanced_Desc%
+HKCR,CLSID\%CLSID_PP_Status%,,,%CLSID_PP_Status_Desc%
+HKCR,CLSID\%CLSID_PP_Status%\InprocServer32,,,%11%\%ExtensionDLL%
+HKCR,CLSID\%CLSID_PP_Status%\InprocServer32,ThreadingModel,,Both
+HKLM,%MedSets%\%CLSID_PropSet_LVCam_PPages%\PropertyPages\%CLSID_PP_Status%,,,%CLSID_PP_Status_Desc%
+HKCR,CLSID\%CLSID_PP_Device%,,,%CLSID_PP_Device_Desc%
+HKCR,CLSID\%CLSID_PP_Device%\InprocServer32,,,%11%\%ExtensionDLL%
+HKCR,CLSID\%CLSID_PP_Device%\InprocServer32,ThreadingModel,,Both
+HKLM,%MedSets%\%CLSID_PropSet_LVCam_PPages%\PropertyPages\%CLSID_PP_Device%,,,%CLSID_PP_Device_Desc%
+HKCR,CLSID\%CLSID_PP_Troubleshooting%,,,%CLSID_PP_Troubleshooting_Desc%
+HKCR,CLSID\%CLSID_PP_Troubleshooting%\InprocServer32,,,%11%\%ExtensionDLL%
+HKCR,CLSID\%CLSID_PP_Troubleshooting%\InprocServer32,ThreadingModel,,Both
+HKLM,%MedSets%\%CLSID_PropSet_LVCam_PPages%\PropertyPages\%CLSID_PP_Troubleshooting%,,,%CLSID_PP_Troubleshooting_Desc%
+HKCR,CLSID\%CLSID_PP_Traffic%,,,%CLSID_PP_Traffic_Desc%
+HKCR,CLSID\%CLSID_PP_Traffic%\InprocServer32,,,%11%\%ExtensionDLL%
+HKCR,CLSID\%CLSID_PP_Traffic%\InprocServer32,ThreadingModel,,Both
+HKLM,%MedSets%\%CLSID_PropSet_LVCam_PPages%\PropertyPages\%CLSID_PP_Traffic%,,,%CLSID_PP_Traffic_Desc%
+HKCR,CLSID\%CLSID_PP_Debug%,,,%CLSID_PP_Debug_Desc%
+HKCR,CLSID\%CLSID_PP_Debug%\InprocServer32,,,%11%\%ExtensionDLL%
+HKCR,CLSID\%CLSID_PP_Debug%\InprocServer32,ThreadingModel,,Both
+HKLM,%MedSets%\%CLSID_PropSet_LVCam_PPages%\PropertyPages\%CLSID_PP_Debug%,,,%CLSID_PP_Debug_Desc%
+HKCR,CLSID\%CLSID_PP_Registers%,,,%CLSID_PP_Registers_Desc%
+HKCR,CLSID\%CLSID_PP_Registers%\InprocServer32,,,%11%\%ExtensionDLL%
+HKCR,CLSID\%CLSID_PP_Registers%\InprocServer32,ThreadingModel,,Both
+HKLM,%MedSets%\%CLSID_PropSet_LVCam_PPages%\PropertyPages\%CLSID_PP_Registers%,,,%CLSID_PP_Registers_Desc%
+
+[LVCAM2_Prop_X64.AddReg]
+HKLM,%MedSets%\%CLSID_PropSet_LVCam_PPages%
+HKLM,%MedSets%\%CLSID_PropSet_LVCam_PPages%\PropertyPages
+HKCR,CLSID\%CLSID_PP_Advanced%,,,%CLSID_PP_Advanced_Desc%
+HKCR,CLSID\%CLSID_PP_Advanced%\InprocServer32,,,%11%\%ExtensionDLL64%
+HKCR,CLSID\%CLSID_PP_Advanced%\InprocServer32,ThreadingModel,,Both
+HKLM,%MedSets%\%CLSID_PropSet_LVCam_PPages%\PropertyPages\%CLSID_PP_Advanced%,,,%CLSID_PP_Advanced_Desc%
+HKCR,CLSID\%CLSID_PP_Status%,,,%CLSID_PP_Status_Desc%
+HKCR,CLSID\%CLSID_PP_Status%\InprocServer32,,,%11%\%ExtensionDLL64%
+HKCR,CLSID\%CLSID_PP_Status%\InprocServer32,ThreadingModel,,Both
+HKLM,%MedSets%\%CLSID_PropSet_LVCam_PPages%\PropertyPages\%CLSID_PP_Status%,,,%CLSID_PP_Status_Desc%
+HKCR,CLSID\%CLSID_PP_Device%,,,%CLSID_PP_Device_Desc%
+HKCR,CLSID\%CLSID_PP_Device%\InprocServer32,,,%11%\%ExtensionDLL64%
+HKCR,CLSID\%CLSID_PP_Device%\InprocServer32,ThreadingModel,,Both
+HKLM,%MedSets%\%CLSID_PropSet_LVCam_PPages%\PropertyPages\%CLSID_PP_Device%,,,%CLSID_PP_Device_Desc%
+HKCR,CLSID\%CLSID_PP_Troubleshooting%,,,%CLSID_PP_Troubleshooting_Desc%
+HKCR,CLSID\%CLSID_PP_Troubleshooting%\InprocServer32,,,%11%\%ExtensionDLL64%
+HKCR,CLSID\%CLSID_PP_Troubleshooting%\InprocServer32,ThreadingModel,,Both
+HKLM,%MedSets%\%CLSID_PropSet_LVCam_PPages%\PropertyPages\%CLSID_PP_Troubleshooting%,,,%CLSID_PP_Troubleshooting_Desc%
+HKCR,CLSID\%CLSID_PP_Traffic%,,,%CLSID_PP_Traffic_Desc%
+HKCR,CLSID\%CLSID_PP_Traffic%\InprocServer32,,,%11%\%ExtensionDLL64%
+HKCR,CLSID\%CLSID_PP_Traffic%\InprocServer32,ThreadingModel,,Both
+HKLM,%MedSets%\%CLSID_PropSet_LVCam_PPages%\PropertyPages\%CLSID_PP_Traffic%,,,%CLSID_PP_Traffic_Desc%
+HKCR,CLSID\%CLSID_PP_Debug%,,,%CLSID_PP_Debug_Desc%
+HKCR,CLSID\%CLSID_PP_Debug%\InprocServer32,,,%11%\%ExtensionDLL64%
+HKCR,CLSID\%CLSID_PP_Debug%\InprocServer32,ThreadingModel,,Both
+HKLM,%MedSets%\%CLSID_PropSet_LVCam_PPages%\PropertyPages\%CLSID_PP_Debug%,,,%CLSID_PP_Debug_Desc%
+HKCR,CLSID\%CLSID_PP_Registers%,,,%CLSID_PP_Registers_Desc%
+HKCR,CLSID\%CLSID_PP_Registers%\InprocServer32,,,%11%\%ExtensionDLL64%
+HKCR,CLSID\%CLSID_PP_Registers%\InprocServer32,ThreadingModel,,Both
+HKLM,%MedSets%\%CLSID_PropSet_LVCam_PPages%\PropertyPages\%CLSID_PP_Registers%,,,%CLSID_PP_Registers_Desc%
+
+[LVCAM2_Prop_AMD64.AddReg]
+HKLM,%AMD64_WOW6432CLSIDNODE%\%CLSID_PP_Advanced%,,,%CLSID_PP_Advanced_Desc%
+HKLM,%AMD64_WOW6432CLSIDNODE%\%CLSID_PP_Advanced%\InprocServer32,,,%11%\%ExtensionDLL%
+HKLM,%AMD64_WOW6432CLSIDNODE%\%CLSID_PP_Advanced%\InprocServer32,ThreadingModel,,Both
+HKLM,%AMD64_WOW6432CLSIDNODE%\%CLSID_PP_Status%,,,%CLSID_PP_Status_Desc%
+HKLM,%AMD64_WOW6432CLSIDNODE%\%CLSID_PP_Status%\InprocServer32,,,%11%\%ExtensionDLL%
+HKLM,%AMD64_WOW6432CLSIDNODE%\%CLSID_PP_Status%\InprocServer32,ThreadingModel,,Both
+HKLM,%AMD64_WOW6432CLSIDNODE%\%CLSID_PP_Device%,,,%CLSID_PP_Device_Desc%
+HKLM,%AMD64_WOW6432CLSIDNODE%\%CLSID_PP_Device%\InprocServer32,,,%11%\%ExtensionDLL%
+HKLM,%AMD64_WOW6432CLSIDNODE%\%CLSID_PP_Device%\InprocServer32,ThreadingModel,,Both
+HKLM,%AMD64_WOW6432CLSIDNODE%\%CLSID_PP_Troubleshooting%,,,%CLSID_PP_Troubleshooting_Desc%
+HKLM,%AMD64_WOW6432CLSIDNODE%\%CLSID_PP_Troubleshooting%\InprocServer32,,,%11%\%ExtensionDLL%
+HKLM,%AMD64_WOW6432CLSIDNODE%\%CLSID_PP_Troubleshooting%\InprocServer32,ThreadingModel,,Both
+HKLM,%AMD64_WOW6432CLSIDNODE%\%CLSID_PP_Traffic%,,,%CLSID_PP_Traffic_Desc%
+HKLM,%AMD64_WOW6432CLSIDNODE%\%CLSID_PP_Traffic%\InprocServer32,,,%11%\%ExtensionDLL%
+HKLM,%AMD64_WOW6432CLSIDNODE%\%CLSID_PP_Traffic%\InprocServer32,ThreadingModel,,Both
+HKLM,%AMD64_WOW6432CLSIDNODE%\%CLSID_PP_Debug%,,,%CLSID_PP_Debug_Desc%
+HKLM,%AMD64_WOW6432CLSIDNODE%\%CLSID_PP_Debug%\InprocServer32,,,%11%\%ExtensionDLL%
+HKLM,%AMD64_WOW6432CLSIDNODE%\%CLSID_PP_Debug%\InprocServer32,ThreadingModel,,Both
+HKLM,%AMD64_WOW6432CLSIDNODE%\%CLSID_PP_Registers%,,,%CLSID_PP_Registers_Desc%
+HKLM,%AMD64_WOW6432CLSIDNODE%\%CLSID_PP_Registers%\InprocServer32,,,%11%\%ExtensionDLL%
+HKLM,%AMD64_WOW6432CLSIDNODE%\%CLSID_PP_Registers%\InprocServer32,ThreadingModel,,Both
+
+[FTRep.AddReg]
+HKLM,System\CurrentControlSet\Control\Logitech\FTERep,Repository0043,0x1,87,c7,f5,93,b2,87,b7,4f,85,8a,7f,84,d5,a9,  \
+       bd,42,c1,61,23,1a,dc,02,b5,8e,e8,33,f2,16,d3,90,48,b4,20,e4,5b,de,7e,58,cc,ed,9f,0a,65,72,f8,47,02,a6,b9,4e,  \
+       b8,b9,6b,a5,02,74,bc,5a,15,bf,61,7a,70,5d,81,2b,85,12,6f,5e,88,0d,51,c6,0a,db,23,0b,8b,93,15,1b,03,e9,fe,32,  \
+       48,34,5c,a3,19,02,67,9e,d5,10,7d,12,55,82,17,c9,f3,7d,64,a6,e6,48,4c,a9,2b,36,ab,6e,a2,d2,3b,3a,b9,a0,f5,4b,  \
+       a6,ac,29,8b,7b,ea,b5,6b,6f,bf,b9,0f,06,e7,bd,7a,19,f7,d1,56,c6,6d,7d,b1,aa,75,8c,fb,46,dc,ba,43,bf,a1,7a,72,  \
+       2b,2b,d9,44,1a,29,a9,75,3b,89,ae,d4,eb,0e,0f,c0,c1,d5,58,9f,3a,c3,a1,97,c6,05,d8,49,23,f0,d1,75,36,04,f9,5e,  \
+       68,59,0e,a6,66,cd,d8,62,cb,2b,c1,9d,7c,dd,85,59,26,8c,16,48,2d,03,1f,ac,10,1a,5f,15,a0,7a,b7,4d,2b,b7,3d,a9,  \
+       97,ff,9a,08,59,d0,eb,10,6d,e4,f0,95,4c,e7,e6,ad,b9,67,da,de,a9,a1,72,89,87,09,eb,82,39,0a,aa,18,2a,26,1c,69,  \
+       d3,f5,bc,cb,68,14,52,61,1e,3b,31,60,39,21,0b,d0,82,10,ea,de,92,d0,71,7e,3c,4b,5b,85,9e,d3,d6,28,10,cd,5b,d5,  \
+       3c,fe,c3,57,f6,4d,c7,fb,a2,63,d2,18,84,19,11,4a,b1,1d,df,d9,40,d7,74,2e,03,e0,c2,e2,78,85,da,fd,68,a8,f6,86,  \
+       97,04,8d,e2,40,83,44,55,f5,01,8c,80,a5,f5,13,e9,15,83,85,8e,dd,cd,ab,f3,7f,d1,bb,c5,57,59,68,5b,55,55,82,84,  \
+       a5,8d,2d,1e,47,0e,d0,21,ff,f1,23,0a,15,80,2e,c7,45,55,47,c8,3f,af,8e,d3,38,a7,9c,61,4d,e4,fb,7c,ca,51,e9,aa,  \
+       0a,08,3d,61,d6,f1,74,bb,48,da,91,03,2c,06,38,5d,01,93,0c,03,af,08,08,dd,0b,62,5d,81,fa,b8,a5,57,52,e7,0d,fe,  \
+       61,f4,9c,00,36,a0,0b,a7,d9,13,19,db,a3,ad,05,42,6a,4f,82,70,70,e5,2b,80,b1,fc,b9,25,2f,a9,64,23,e9,e3,31,30,  \
+       02,b0,56,5a,31,78,14,c7,ff,dc,c1,83,2c,5b,91,74,9c,4b,2a,90,46,03,06,76,e4,f4,30,81,dc,b9,86,17,a8,49,96,74,  \
+       15,8e,f3,96,9f,9f,99,17,84,f6,0c,38,f3,0c,4c,3f,31,83,ab,53,66,f7,43,38,4d,26,88,c3,bc,07,26,ec,0d,c4,48,a5,  \
+       53,d6,6a,89,54,ff,fd,5e,e1,13,f7,b7,a5,c4,fe,f2,85,d0,80,8d,b9,e1,ee,bc,e8,4e,d4,ec,31,62,20,00,b7,67,c5,f3,  \
+       cb,88,3d,e0,cd,a8,db,fd,59,61,60,28,f3,c2,15,75,5f,5f,95,e2,60,2b,3b,c6,cf,d1,1b,a1,fd,09,55,1d,bd,ac,da,11,  \
+       8c,60,99,90,3d,83,12,d4,78,cb,65,4e,f3,61,29,3c,7d,76,50,50,81,62,17,21,a0,d4,99,2a,f3,7a,eb,2f,e6,a2,18,6d,  \
+       c9,bb,53,c4,b5,32,c7,2b,6e,b6,c5,48,97,c5,08,e5,b5,40,bc,47,6e,a1,d2,3d,66,6b,74,0d,a8,72,da,26,ac,fd,7b,2f,  \
+       5d,ae,2d,69,45,e3,72,b5,0b,67,31,96,dc,f9,a9,4c,56,12,04,9f,62,f8,f2,0f,20,90,b7,ff,70,68,d3,55,90,61,fa,34,  \
+       25,ad,f4,9a,6c,14,83,8c,64,2a,a8,f5,8e,ca,eb,1e,51,4a,d3,4f,57,41,73,5e,b0,e2,92,3a,d7,d4,88,ae,92,82,19,4c,  \
+       d2,d1,0b,1e,1b,8d,88,c9,88,33,bb,af,17,54,2d,0b,81,28,8d,c1,52,c8,c3,34,1a,24,76,e7,91,62,f9,6a,0a,64,24,3a,  \
+       12,ad,ba,8b,21,7b,16,53,a1,1a,aa,a6,8d,f0,9d,3f,d9,27,53,d2,fe,b5,ed,6d,5c,92,f4,57,df,42,d2,0c,a5,b4,cc,34,  \
+       44,db,bc,35,45,81,53,96,5d,1d,fd,5d,12,26,de,c6,53,e1,4c,c9,21,13,38,bc,2c,46,35,a2,f0,c1,bf,d9,65,f6,63,ac,  \
+       3a,1d,61,d1,b6,7f,d6,9e,d8,cf,dd,32,9e,07,4e,a9,34,9f,15,b6,06,9f,6d,24,ac,b3,1b,1b,e8,48,c0,de,c2,28,95,56,  \
+       3b,5f,94,a4,0d,66,61,b1,8d,3a,6f,35,d4,22,6e,96,00,58,4a,b0,16,a2,ea,36,2d,fe,7a,a9,06,0f,52,e7,64,10,6c,c6,  \
+       98,ce,50,e2,7b,a7,66,d7,0d,2a,a9,a7,d9,22,ae,58,6c,6d,f2,ed,7a,cd,58,b9,ae,91,68,bc,d9,eb,1c,8b,07,0e,8e,36,  \
+       02,ab,7b,24,1e,46,f1,cc,7d,54,6b,d8,a7,e3,cc,e9,c3,4e,83,41,bb,60,1d,28,94,71,bf,3b,1c,ee,d1,13,12,28,42,1d,  \
+       ff,cc,b4,80,25,7e,38,3a,95,5a,31,91,ad,3b,d5,97,04,7d,e2,97,7c,a3,9b,4e,31,ce,3f,5c,c3,cf,2e,7c,d6,dd,7f,63,  \
+       19,37,45,51,09,26,c9,6a,ad,24,c5,56,17,f4,fd,46,e9,3b,c0,2b,c2,3b,3e,7e,8f,b5,15,c7,cb,5f,93,db,45,46,79,13,  \
+       cd,26,07,fc,a8,6b,69,34,db,0d,df,93,65,f7,b9,7a,9e,0a,d8,71,0b,c7,33,58,f9,3a,86,99,7c,a9,1b,b2,0b,be,de,22,  \
+       9c,76,f0,cb,84,5e,fd,e7,1d,d9,2c,80,4e,f8,47,df,2f,24,9d,88,d1,8d,14,c3,e3,e4,67,3a,dd,e9,f9,95,79,df,ec,ca,  \
+       9d,d2,c8,f3,6e,43,d1,5a,e0,d7,f6,0f,78,9b,79,4d,84,13,64,fa,ce,5c,01,c3,c5,2d,09,3c,3b,2a,50,75,01,7f,4d,7a,  \
+       1d,28,ba,ee,9d,91,b2,de,70,ba,62,74,ff,66,1f,f0,69,59,e6,73,b7,f8,b0,46,00,9a,2a,71,c2,76,2d,59,7e,05,3a,2b,  \
+       a9,ee,96,29,4d,3c,91,f7,54,1a,0a,cc,8c,c8,86,fd,55,e5,94,c4,9f,93,8b,dc,a6,44,cf,85,7a,62,e9,db,39,e7,3d,fa,  \
+       db,e3,69,86,0a,49,53,b0,11,d8,2d,c0,72,97,68,97,50,99,34,cb,af,a4,77,f3,b2,02,98,0b,c6,8f,7e,43,02,ca,86,51,  \
+       26,50,b7,d6,c3,f6,18,77,47,38,7b,50,cb,9c,04,0e,48,9d,48,c2,78,b1,6a,df,00,d7,17,38,6a,69,2e,e6,db,d5,29,94,  \
+       09,3d,23,78,de,d7,35,a7,2c,80,94,79,4e,c5,f3,dd,ae,a0,34,6d,b9,18,bd,ef,0f,54,86,56,09,4a,e0,32,a7,db,d6,be,  \
+       8b,28,d2,84,ed,51,2b,8a,a9,e3,b8,1f,0b,88,80,4d,78,1b,36,88,22,8c,e8,6b,63,ae,92,55,2b,89,f6,b1,f4,7a,5e,b0,  \
+       6e,78,47,1d,c3,0c,6d,40,49,a6,5f,f1,a1,58,d7,e5,a6,f3,19,59,de,bd,9c,33,af,b9,9a,46,e6,12,fc,a6,b6,3b,46,b7,  \
+       fe,e1,f4,60,56,42,7c,a4,25,52,8f,6c,11,31,92,66,43,cd,e4,86,6e,ed,32,ae,4f,ea,99,45,3d,e5,5a,05,20,3a,bc,ee,  \
+       f9,cf,d3,0d,2f,fb,34,39,16,82,48,83,00,6b,99,42,b3,05,6e,13,55,c4,f1,cc,0d,7c,e2,9f,08,d7,3f,bb,60,ff,37,ca,  \
+       32,b9,53,e5,fd,c4,ee,e5,91,8b,65,ce,06,da,c4,1a,1a,2e,f5,17,e4,76,0f,44,c4,41,b5,17,b8,9b,3c,ea,de,30,87,01,  \
+       21,91,a3,a0,72,50,12,0a,d5,62,61,24,ee,0f,07,02,f8,bd,17,da,1d,39,35,28,86,aa,6d,1a,dc,63,06,55,17,e2,d0,39,  \
+       56,3d,ac,e9,d4,f6,c9,74,66,ca,77,a0,fa,11,89,ce,21,93,ea,8b,c6,ce,bb,60,3e,32,2f,0c,9c,66,66,c6,ce,41,db,95,  \
+       b8,f6,f3,15,0f,01,22,1a,ca,55,4b,9d,b2,18,31,fd,21,41,97,86,c7,76,6a,d7,b5,10,f0,46,ca,f1,01,70,7c,3d,4b,27,  \
+       c8,04,bc,fa,24,17,f5,34,1c,3d,a1,70,3b,bb,50,25,5f,1e,85,6f,79,98,1c,4f,67,8c,9f,b1,b8,d0,ae,09,aa,6e,67,4f,  \
+       62,8a,38,b6,c4,ad,85,53,f8,08,7d,4f,ae,cf,a1,ba,81,ad,8f,07,0c,ff,1e,dc,e6,78,3a,3b,9e,6e,07,17,e5,b9,3e,93,  \
+       f0,a7,f3,78,42,51,40,b1,72,3c,3e,d3,b2,6d,ad,24,9c,cc,75,cf,b9,fd,1b,44,29,39,d3,b1,f7,8c,1f,d5,44,58,06,5f,  \
+       99,b5,41,79,68,82,4a,bd,a3,e9,9d,71,ce,8b,8b,9f,13,91,0a,7c,e8,47,58,a4,ee,57,f2,08,7c,30,0f,d6,a3,cb,93,62,  \
+       6f,29,16,0a,9d,b0,eb,a7,04,04,1c,59,cb,db,b4,69,05,ed,76,a9,d3,71,46,2b,0a,cd,29,2a,83,48,38,55,84,3c,d5,44,  \
+       37,9d,89,ab,fe,72,03,a7,96,23,84,e7,a4,59,ee,83,8f,1b,94,9b,8a,89,91,56,5f,f5,8e,7b,aa,25,ad,8e,01,93,63,2a,  \
+       f3,76,da,ca,d3,8f,6a,ab,f9,8b,1e,fd,e2,61,25,81,89,c0,e1,58,41,c5,79,07,3c,0c,b6,83,7d,57,a0,07,31,92,3c,67,  \
+       6a,12,e9,c1,f1,8b,2c,b1,f0,be,d5,46,69,f0,80,de,0a,3b,2c,57,2c,01,0d,3b,e7,10,b7,a1,f0,76,a8,06,7e,7f,37,72,  \
+       63,a6,a4,80,b9,cd,5d,61,9b,0d,50,32,41,50,33,2b,27,ce,35,b7,0f,25,37,33,90,b9,52,b0,a0,b7,4d,8d,71,63,78,ef,  \
+       f1,e1,9b,96,d3,84,35,7e,de,de,71,d6,9e,6b,df,58,04,09,ab,d5,bd,b3,b5,60,02,b7,76,b5,e4,28,c7,33,27,d5,c3,3a,  \
+       75,61,c3,72,3c,91,88,28,a7,cf,6c,94,f9,00,43,58,e1,3f,e8,d6,a3,9e,9d,15,8e,12,09,72,46,76,fb,80,26,22,03,08,  \
+       4c,df,71,10,d1,b4,c7,3c,45,f2,f0,94,cc,5e,0a,3c,f8,b6,99,8a,0b,6b,79,e1,10,cf,bd,ed,ce,01,16,07,86,35,55,64,  \
+       7f,14,f2,d1,33,f1,3c,d3,fa,42,02,a1,d4,38,de,e9,bc,be,ef,54,6c,5a,24,79,5d,cc,6d,04,dd,39,da,ac,41,86,6e,56,  \
+       af,b0,89,70,28,48,7e,c5,cf,8f,d0,1a,3b,d6,fb,3b,b3,a7,64,9d,6b,91,d7,e2,18,c2,b3,70,51,0a,03,85,54,ea,cb,1e,  \
+       e4,22,c8,93,40,07,7f,d5,b7,84,cf,a5,3a,d7,f2,83,ee,1e,fe,38,61,65,d8,e4,04,46,bd,1e,b4,50,23,7a,e3,b2,eb,0b,  \
+       6f,99,a3,d9,e8,95,d0,eb,98,97,e7,4b,f6,2c,6f,96,2f,c4,7e,85,9a,91,44,ec,5e,7a,99,0e,7f,c4,9b,59,ca,e7,1c,ec,  \
+       24,7b,91,33,db,72,de,7c,8d,be,86,b5,67,f6,dd,30,e8,77,31,4f,66,49,37,ad,9a,06,16,0a,32,b0,b8,66,ba,52,cf,04,  \
+       8b,f9,5e,7a,d6,c2,c7,fa,58,f6,db,b6,fe,f6,81,df,cc,65,12,ca,90,53,16,29,60,4d,7f,b7,66,69,08,b8,80,5b,d3,11,  \
+       11,28,20,5b,e6,7e,8b,4e,7d,24,07,35,ad,69,2e,db,cd,e1,61,44,66,1d,a3,c7,b5,7e,57,23,01,de,df,98,45,3b,44,1e,  \
+       0b,4a,2b,ae,ac,d3,09,17,b7,6f,e2,91,56,54,7a,68,0f,fc,c1,56,8d,d6,6a,f9,71,04,92,69,cf,b1,88,77,84,e1,c1,6f,  \
+       3c,ba,72,4e,cb,2c,a0,33,4c,fe,df,f7,bc,e6,31,da,37,a6,98,b4,b7,5a,15,d5,48,a7,77,e7,76,24,de,38,f3,46,4f,8d,  \
+       76,36,19,58,18,14,ad,4f,c4,66,fc,9e,c0,1e,e4,b7,07,55,2f,ce,80,84,8b,5b,29,61,9e,13,71,c8,a5,a6,31,b2,f8,61,  \
+       ec,87,41,15,59,11,40,e2,a2,32,ac,94,b1,71,19,cb,28,a5,be,0c,3b,4a,b6,5a,64,7b,e1,09,fc,a1,81,2e,39,47,b0,74,  \
+       0c,49,e0,f0,eb,b5,b9,52,fd,33,ea,89,06,da,17,88,d5,fd,41,eb,07,1d,1b,e6,1e,71,3b,a9,6d,ac,1a,ab,64,8a,bf,bb,  \
+       62,1e,0b,7d,87,eb,59,9f,c0,5b,77,50,ac,fb,64,96,49,14,5e,0a,b1,cc,e4,08,6f,44,e4,37,58,6e,32,87,69,80,36,5f,  \
+       fe,93,62,ca,28,b5,bc,62,39,c2,d0,3b,32,28,0f,c8,3d,1f,b0,2c,13,f8,92,7c,e1,14,14,6c,ac,0c,3a,64,95,41,d2,0a,  \
+       5f,93,6c,64,ac,b4,1d,99,ec,57,0f,20,38,e8,f2,1f,dc,50,67,d2,86,d4,21,dd,56,52,83,43,95,f9,e5,7d,e9,85,4c,a9,  \
+       09,a6,ef,8f,00,d9,1f,c7,8b,aa,ff,eb,68,8c,28,e3,89,1d,89,fa,9d,e9,c2,06,25,1a,f7,81,09,17,01,a0,5d,b6,ac,b8,  \
+       65,4c,d5,0d,8c,96,37,1d,96,03,fa,6b,43,41,7b,ac,31,8a,1f,ba,cf,2b,b6,31,ad,63,ae,8b,c5,8a,43,88,30,81,d1,ee,  \
+       47,25,aa,d0,22,ad,38,f9,23,c2,a3,3a,27,e3,aa,3f,71,9d,62,0f,35,41,04,bf,d4,f8,4e,a8,0e,76,29,27,8f,de,89,f0,  \
+       8a,cc,6a,94,ef,fc,59,a7,c8,34,90,e1,da,bc,e1,ad,07,c4,78,59,b7,4b,ab,e2,f5,bb,80,86,fd,18,94,b8,71,ab,8d,7e,  \
+       0e,7b,0f,eb,5d,40,87,98,c7,12,e9,be,fc,d1,3b,40,58,7a,6a,31,77,33,c9,23,40,87,b3,d6,e2,70,9c,76,04,c3,47,25,  \
+       f7,17,e6,46,a5,95,09,db,bb,6c,37,21,81,65,93,31,ee,04,23,fa,fa,73,fe,e9,cb,1f,21,45,3e,45,d4,7c,8b,6b,fe,01,  \
+       d4,7a,28,ca,ba,4d,57,02,4c,c9,95,8c,f6,ff,1e,de,e1,87,9d,81,ae,3e,92,34,f7,bf,a5,41,23,ac,6a,0d,8f,22,52,f0,  \
+       1a,82,76,39,5f,20,40,75,2f,07,d7,52,b6,1f,5f,dd,fe,d0,74,ca,85,9c,01,91,03,37,03,51,63,69,4b,30,e3,fc,21,cb,  \
+       ba,d4,72,db,7f,f0,da,72,df,fe,23,54,8b,49,91,f6,2e,93,43,9a,cf,b8,12,b8,a9,26,62,d7,99,72,7b,c2,6a,27,79,30,  \
+       51,1c,24,fa,17,0c,89,31,00,f8,c2,9f,02,89,f9,a1,da,90,33,ef,55,7d,49,a6,96,a8,31,c9,60,8a,45,cb,3e,44,21,18,  \
+       f1,76,34,02,49,fd,03,1c,23,1b,49,5f,a5,7b,f3,d9,b6,84,3d,40,94,48,5f,c0,82,ab,8e,01,a7,10,9d,90,85,fc,87,6d,  \
+       69,2c,7b,7e,5b,a3,49,f4,ce,08,29,93,21,72,07,a9,03,d2,7a,7e,c8,89,93,2e,4e,4e,31,8d,cf,75,83,c4,b7,af,8e,f0,  \
+       7d,14,81,0b,37,84,d1,c6,5d,7b,b4,c2,1a,b6,11,28,3f,86,3e,88,a6,b6,cc,a8,98,81,b1,46,e1,27,b4,03,5a,67,31,14,  \
+       20,e8,13,be,e6,73,dc,98,4f,ef,be,59,73,6f,40,fc,db,0f,8d,81,84,34,ad,7b,89,ae,f7,49,6f,cd,b3,fb,97,8a,4f,f7,  \
+       09,fa,e5,65,73,a9,bf,55,42,bc,96,16,48,20,94,76,da,1e,75,ce,2e,f7,79,47,1e,e3,e3,79,68,d8,19,75,ea,a1,49,6b,  \
+       f9,0d,17,60,d7,80,2d,e0,b3,94,7d,73,9f,12,4e,09,21,30,2f,15,f9,c4,0d,a1,17,96,9e,43,fd,c6,1f,c9,81,a2,5a,8c,  \
+       df,2c,4c,4d,d2,ae,9a,d2,62,87,ff,85,93,58,bc,1a,7c,b4,26,06,a0,c8,e5,19,59,d0,f3,74,42,c5,c7,5b,9e,90,24,f0,  \
+       42,87,58,f0,7e,fe,01,e9,3d,c6,84,bf,07,00,ad,00,97,27,f9,ed,a9,dc,65,bd,2e,60,fc,18,b6,3d,6b,57,f4,fb,87,31,  \
+       a5,7b,8d,b5,68,85,cf,d2,bb,9e,52,11,4a,ef,36,ff,9e,92,7c,f7,b1,54,65,f4,be,89,b8,32,1d,85,e3,2a,2a,13,f3,97,  \
+       a0,dd,52,43,99,b9,e2,d6,97,5d,e6,df,44,05,d8,d2,34,c8,95,16,5a,7e,85,f7,9c,b8,a1,05,25,14,ce,31,bb,2c,4d,e4,  \
+       66,0a,fe,be,ba,9a,3c,d3,b7,9f,c1,1f,c8,2f,7d,55,9c,c8,77,02,68,af,40,f5,00,46,6e,6c,32,35,bd,9f,83,8d,91,66,  \
+       8a,3c,7b,18,ee,2b,49,a1,3c,65,ae,7a,6d,bf,1e,d2,b6,e2,ce,62,76,9c,42,ee,c0,c6,6b,49,ad,e2,cf,9a,bd,c4,53,5c,  \
+       ff,4e,0c,03,6b,6b,5d,1e,e9,78,43,fe,22,bb,1b,71,3e,cd,bf,cb,a5,86,a7,d6,7e,47,e0,68,0d,cd,a1,26,e5,ba,82,2c,  \
+       3f,17,41,ce,b9,08,4a,c5,d2,6c,f3,61,32,92,53,ad,e1,f3,f4,54,22,a0,07,42,e9,fa,53,55,71,92,e0,b1,09,f6,f8,c1,  \
+       87,b1,39,42,b0,9b,82,60,4f,eb,f4,be,80,59,95,7b,3d,88,2d,27,40,d6,16,1a,5e,a2,81,44,88,98,4f,4a,a3,bb,17,f1,  \
+       5c,95,18,d6,f6,1a,87,f4,fd,bd,7c,85,02,cc,ac,cf,e9,b0,06,1f,8e,53,a6,31,ed,15,62,33,8b,83,34,52,8e,3e,01,7a,  \
+       e3,e5,10,19,fc,94,19,b7,00,2e,4d,34,fb,58,8f,12,be,15,9a,8b,bc,db,38,9d,2d,17,59,87,56,07,52,02,9b,85,ba,b3,  \
+       c7,9b,b0,10,20,37,ae,bd,a0,3d,1d,1a,16,1c,25,ce,ab,2d,04,a6,6a,53,7c,e6,ba,8a,ee,d3,6d,e8,99,c1,4f,dd,bd,bd,  \
+       b9,4b,14,fa,90,cf,5e,13,93,8e,d2,4a,8f,a6,3f,38,c8,23,98,3f,d7,ce,d1,ce,a4,c1,98,9e,ce,23,15,1e,35,cb,96,2a,  \
+       17,73,05,9e,51,fd,57,7e,e2,8c,8b,74,65,54,39,dc,79,84,7c,72,48,0b,0b,e1,67,c6,3a,b3,82,6b,25,ba,61,d9,57,33,  \
+       d3,61,fb,14,ca,9a,c9,a4,7b,d5,6b,25,fe,37,fd,86,a2,b3,72,0e,e5,26,6e,10,c2,d7,68,87,38,b6,a9,75,25,2d,a7,a1,  \
+       fa,11,f0,08,77,f4,ac,a9,74,16,e1,30,20,27,7a,4d,da,d2,7e,f1,48,2d,08,2c,26,c0,87,5c,e6,d1,c3,ee,61,b8,c5,cd,  \
+       2e,2c,21,f5,82,38,b8,a2,68,e4,1b,5a,00,da,21,0c,ad,7d,cd,40,30,4f,f9,dc,b2,c7,fd,02,81,7a,4e,7f,58,77,0d,18,  \
+       1f,52,9a,94,f7,23,b8,2a,f5,9e,7b,54,08,ee,cc,44,15,2e,0d,02,75,7a,94,56,89,89,98,ff,38,0b,18,64,4e,ce,dc,fb,  \
+       02,59,f8,5c,e2,2f,cf,39,7a,72,30,cb,b1,1b,60,b7,f7,5f,c2,69,7b,23,69,32,a9,5c,5a,49,af,e0,0f,db,8a,bd,34,64,  \
+       1a,8a,69,55,c8,f7,26,ed,01,f5,59,12,89,b2,fd,61,34,66,8a,16,1c,0a,2a,2e,d8,a6,76,98,1f,3e,f3,e9,fa,04,b5,00,  \
+       03,fb,04,f3,63,a8,b5,e8,f0,c3,ab,8a,f0,0b,1b,2d,ff,e0,7a,2e,e0,da,34,1e,76,3c,40,71,00,e5,76,af,e4,46,72,d0,  \
+       1d,fa,a4,62,18,cc,90,ee,4c,c0,61,8b,7a,1c,21,0d,62,88,21,fb,6e,5b,81,dd,6e,7b,9b,ad,1e,67,0d,2a,3f,53,59,f9,  \
+       91,d9,83,42,1c,df,ea,78,8a,9f,1d,6d,35,f0,a1,4c,50,06,f3,98,aa,2b,2b,13,e2,1a,0a,a9,fa,73,37,02,69,80,48,05,  \
+       d3,be,5f,8a,9b,d1,75,16,ee,be,c6,07,bb,8a,33,2f,6b,18,40,d8,51,cd,75,68,7b,f2,92,5d,a0,10,b2,81,c3,a2,1f,a5,  \
+       1c,7e,3d,d8,da,92,15,42,4d,11,89,54,04,18,b4,dc,a7,6c,85,d1,02,5c,2d,20,ea,8d,74,4c,64,d3,56,de,4a,8c,24,9b,  \
+       04,05,49,7f,e6,e2,33,dc,53,2d,5c,f5,77,f3,81,c2,0c,3e,6b,72,d3,4e,94,d6,01,12,28,ec,46,c8,32,81,da,8c,4c,ee,  \
+       d6,d5,79,9b,63,b6,2e,05,42,78,d7,8a,6f,d0,b7,86,a8,ae,17,44,12,45,9f,1b,0d,da,2d,69,99,51,3a,3b,a4,a1,c9,a8,  \
+       9a,22,64,7c,bc,b1,45,22,df,ee,c6,f0,92,8c,d1,df,6b,61,12,80,d3,a5,ed,2e,33,8e,da,62,9a,a8,9a,b8,74,35,da,47,  \
+       70,4c,94,89,90,41,e3,91,0e,76,82,19,a4,a1,39,1f,4e,70,f7,6f,a7,ba,2b,b8,4d,ce,a8,79,cb,da,19,7f,01,6a,d3,51,  \
+       90,10,75,74,dc,ed,d1,f4,23,a8,1c,8b,86,8c,a7,cd,46,9f,a6,6e,48,5c,ef,ad,0b,1c,a7,14,6f,a4,34,7d,8a,10,44,40,  \
+       aa,dc,fb,f4,22,76,a7,1e,bc,80,ce,06,76,6f,f6,77,38,22,b5,28,9e,ba,ac,de,4e,4b,18,23,86,6b,ca,78,05,00,25,cf,  \
+       25,2a,da,28,e2,82,ba,60,35,d4,c4,de,03,65,53,30,f8,56,5d,a7,db,ce,1f,7b,01,c9,5b,ec,6d,a8,88,a0,f7,7a,8b,77,  \
+       fa,9d,81,5e,19,ed,ba,e3,6b,6e,f9,4c,d8,88,3c,ac,53,78,fc,b1,c8,12,91,c8,5d,df,d1,aa,33,68,67,40,7f,33,cf,14,  \
+       ba,23,b3,73,57,31,82,ab,a2,55,d4,3d,ab,d2,37,d7,1d,0f,66,f1,d5,a9,62,0d,22,48,05,0f,9a,a0,8d,d1,1f,93,85,ff,  \
+       8d,67,94,a4,29,ab,53,98,02,23,53,55,0c,09,78,be,3c,58,e9,14,e6,56,bb,b0,d1,c0,6b,61,54,4e,62,7c,c6,44,61,f7,  \
+       86,66,d7,d4,f5,99,d9,59,dc,9c,0a,63,5c,6c,0f,cd,2b,a8,68,ba,51,a6,d6,f4,09,ed,51,64,81,dd,0c,27,53,4f,36,4d,  \
+       f0,2a,3d,55,0e,fb,35,e9,9c,b8,84,84,d0,9c,2c,17,86,3a,18,e8,ec,08,d3,3a,2a,a7,7b,25,72,63,42,68,ed,bd,f8,ce,  \
+       fd,41,40,7f,94,22,45,64,92,de,4a,ef,08,03,f7,16,16,6b,eb,31,6a,89,f2,76,59,a2,6c,56,a1,a7,58,93,7e,be,de,76,  \
+       bc,b8,d2,7b,d4,f2,bc,14,47,ba,ec,7f,c1,99,49,6d,42,a3,85,90,1e,94,1d,90,0e,59,85,24,20,38,3f,92,ff,d5,4e,72,  \
+       c3,7b,f7,32,97,24,9c,7a,e6,1d,79,4a,31,4c,b5,c7,a6,e5,c9,72,d4,e5,d4,dd,4a,65,2d,eb,f5,93,0c,7b,9f,ca,22,f1,  \
+       be,90,b3,f8,ab,f6,0a,79,51,f3,d5,2a,9b,fe,e9,c9,d3,f9,d2,d3,db,51,78,15,31,08,d5,75,99,0f,55,99,59,bc,68,c3,  \
+       d9,e5,95,38,72,30,a7,1a,83,3a,ee,a2,b5,5c,6e,12,0d,15,6a,e9,8a,df,44,52,b2,1a,27,fe,b3,c9,b1,a3,1b,6f,b1,79,  \
+       c2,51,2c,5e,10,3e,66,69,58,be,e5,79,7c,9a,58,42,2d,a1,b9,5a,ca,bd,41,2b,30,fc,27,9c,c6,ee,fb,ee,73,c4,57,0b,  \
+       01,01,62,8e,30,2f,17,08,0c,ea,33,5d,25,69,e4,0b,85,58,48,fd,cb,d2,9e,08,4c,28,c8,8a,45,9a,c4,62,c3,b6,28,80,  \
+       d9,8a,9c,34,68,90,84,5b,d4,25,a8,15,11,32,6e,fd,f3,7a,b5,b0,09,79,38,a3,9b,c7,99,49,e7,31,bb,80,52,05,ab,ca,  \
+       89,e1,fe,02,22,ca,05,1d,90,35,9f,8a,aa,3e,99,e1,93,49,03,07,3d,0b,e8,3d,12,8b,c9,15,a0,67,21,33,b9,6f,e2,16,  \
+       aa,a7,fe,fc,b6,31,3c,61,33,3a,3c,ae,1e,71,f0,15,19,35,19,3d,99,67,b8,a3,74,71,fd,1c,4a,69,c0,ed,21,c0,c1,23,  \
+       30,e8,ef,6a,6c,97,4b,32,2b,dd,07,aa,80,5b,fd,b1,25,99,d0,da,7e,e7,02,ec,da,72,54,f5,3b,f7,a8,da,a2,34,0a,6b,  \
+       2b,7e,cd,0e,17,77,58,5a,e8,d3,e2,bb,aa,cc,57,06,bd,37,b9,4a,81,0c,cd,ab,f4,2c,f9,c3,3f,18,64,88,67,00,99,b9,  \
+       e5,5a,68,18,fc,d3,50,2d,cc,08,d8,a1,5e,39,ab,e0,73,76,ad,a7,84,00,21,98,00,55,71,de,7e,b7,28,8f,be,3d,a4,c7,  \
+       94,14,8f,c9,89,27,7a,5b,f3,45,9c,74,6b,5b,c7,1c,48,ac,23,21,e6,9a,3e,11,9a,c2,99,83,d5,86,99,fc,48,fb,85,21,  \
+       10,a3,71,a6,77,30,8c,f6,31,95,8a,5e,bd,a3,ee,f8,d3,9a,a4,de,2f,5c,b7,3d,c8,8f,f3,20,a8,4c,61,92,ac,c9,47,cf,  \
+       ab,e2,b0,38,c0,83,3c,09,32,cf,90,84,c5,97,fb,63,47,c7,c1,14,4e,85,27,cf,3b,72,a8,24,fe,d5,ce,5b,f6,f2,03,b4,  \
+       3c,9e,ff,49,c9,d9,4a,e4,c8,c0,6c,de,34,e0,2b,f1,a4,ae,8c,17,ef,1b,10,42,f0,53,6d,d7,90,1e,c4,87,91,39,87,14,  \
+       61,da,00,e5,b1,c1,77,59,00,0a,d2,1c,19,7f,21,39,9e,2c,48,30,c1,8a,ae,88,fd,a9,b6,52,32,9c,c4,84,e1,ed,f8,36,  \
+       b6,d6,55,62,93,95,0b,bd,05,1a,e7,48,db,25,c1,4c,6a,85,1b,90,b1,32,06,79,3e,75,3b,a5,fd,e3,d3,4d,ca,dc,40,96,  \
+       c1,c4,dd,98,7e,3c,08,c7,c8,6c,3a,42,6b,72,d3,e0,3f,59,c0,ed,c0,dd,86,5e,0d,a2,fd,d1,66,f3,8b,32,05,8d,d3,ce,  \
+       72,b7,13,8d,31,bf,e2,de,60,5c,29,e4,1e,f3,8e,66,73,23,9d,8d,e1,b2,a3,a6,94,61,87,47,a6,24,7b,be,36,e8,48,82,  \
+       51,d2,82,2f,57,12,46,f7,82,cf,bf,e9,81,90,3c,79,e7,51,55,f9,ce,db,9a,bd,c6,02,4f,6c,a3,fa,17,c4,12,5a,ac,40,  \
+       ad,a8,4e,78,50,33,bc,55,a9,03,a1,71,f4,97,48,dc,46,1c,84,ca,db,64,03,9c,5c,30,88,0a,54,b5,b4,4b,17,e9,d0,19,  \
+       0e,1d,a1,88,a0,16,b3,46,e2,20,0d,53,b6,e4,57,67,7c,fa,40,33,2b,c1,7a,ef,c0,2f,03,fd,65,b5,f6,fe,ac,0f,45,92,  \
+       bf,60,5a,75,a3,4a,01,56,a6,a9,68,e3,a3,e9,cf,11,fa,64,e8,75,44,7e,16,7b,1f,dd,b9,34,ac,ec,10,0d,54,55,17,04,  \
+       80,9c,af,ec,d2,74,3f,b9,84,5f,e3,a5,2b,08,b7,56,ff,a5,ac,e9,27,da,d7,75,0b,6f,b7,a5,76,01,ee,86,86,37,4b,49,  \
+       c3,60,dd,22,36,45,97,b1,0f,75,ea,e4,d7,93,e5,81,a9,4e,dc,99,ed,8f,5f,d9,e4,ed,13,bd,d5,25,32,73,cb,dd,94,1d,  \
+       8d,12,2e,64,41,ae,5a,d4,e5,fe,61,69,d4,7c,2c,b1,61,24,3b,0b,0f,1c,ad,94,3c,75,18,26,1b,06,76,62,f1,19,ba,2c,  \
+       a9,52,3d,60,0b,57,7b,21,31,08,9d,e1,4b,d2,56,59,e7,1b,56,43,e0,98,b0,a6,ae,b3,13,18,99,a2,96,2d,a5,c8,d3,e1,  \
+       a9,1c,24,d2,f8,e1,c7,6c,e1,ed,37,0d,7c,49,59,15,c2,ed,1a,38,01,6d,19,c5,95,32,e8,ba,be,ab,cb,d0,6e,a6,83,e2,  \
+       2d,a7,8a,4d
+
+[WUAPP32.Files]
+WUApp32.exe
+
+[WUAPP64.Files]
+WUApp64.exe
+
+[Uninstall]
+DelFiles = WUAPP32.Files,PID_0928.CopyDrivers,MISC.CopyFiles,CopyUserDrvNT,LVUI.CopyFiles,CopyCoInstaller,WUAPP64.Files,PID_0928.CopyDrivers_AMD64,CopyUserDrvNT_AMD64,CopyUserDrvNT_AMD64_WOW6432,LVUI.CopyFiles_AMD64,LVUI.CopyFiles_AMD64_WOW6432, \
+ CopyCoInstaller_X64,CopyUserDrv
+DelReg   = pid_0928.prop.addreg,vfw.addreg.nt,lvcam2_prop.addreg,lvcam2_prop_pin.addreg,lvcam2_prop_devinfo.addreg,appregister.addreg,lvcam2_prop_x64.addreg,lvcam2_prop_amd64.addreg,lvcam2_prop_pin_x64.addreg,lvcam2_prop_devinfo_x64.addreg,\
+ lvcam2_prop_pin_amd64.addreg,lvcam2_prop_devinf_amd64.addreg
+
+[Strings]
+ProxyVCap.CLSID="{17CCA71B-ECD7-11D0-B908-00A0C9223196}"
+KSCATEGORY_CAPTURE="{65E8773D-8F56-11D0-A3B9-00A0C9223196}"
+DS_PinPropertyPage.CLSID = "{6691680C-8B1C-49ec-9254-8FFBE471C256}"
+SERVICE_KERNEL_DRIVER=1
+SERVICE_DEMAND_START=3
+SERVICE_ERROR_NORMAL=1
+MMDrivers="Software\Microsoft\Windows NT\CurrentVersion\Drivers32"
+MedSets="SYSTEM\CurrentControlSet\Control\MediaSets"
+ExtensionDLL = "LVUI2.dll"
+ExtensionDLL64 = "LVUI64.dll"
+DualCamApp="Qsync.exe"
+QuickSyncApp="Qsync.exe"
+QuickSyncArg="/QuickSync"
+ICM_Prfl="sRGB Color Space Profile.icm"
+REG_APPS="Software\Logitech\LVComS\CurrentVersion\RegisteredApplications\{D2B479C0-C3F2-11D1-B014-00AA00CF90F9}"
+QC_DRVS="Software\Logitech\QuickCam\Drivers"
+PVD="Logitech"
+LogitechMfg="Logitech"
+DISK_NAME="Logitech USB Video Camera Disk"
+PID_0928_DD="Logitech QuickCam Express"
+PID_092D_DD="Logitech QuickCam Express/Go"
+PID_092E_DD="Logitech QuickCam Chat"
+PID_092F_DD="Logitech QuickCam Express/Go"
+LVfWWDMDriverDesc="Logitech USB Video Camera"
+DCA500ACONTROL="Software\CA561B\CA500ACONTROL"
+DVIDEOPROCAMP="Software\CA561B\VIDEOPROCAMP"
+FILTER_NAME="{9b365890-165f-11d0-a195-0020afd156e4}"
+CLSID_PropSet_LVCam_PPages="{38760DCD-13F4-4a73-8802-520C31143999}"
+CLSID_PP_Advanced="{1159F2AF-F989-4d11-8B34-9550029269BB}"
+CLSID_PP_Advanced_Desc="Advanced properties"
+CLSID_PP_Status="{09AC4892-81B7-4d39-B235-8F0DB0DAF4F8}"
+CLSID_PP_Status_Desc="Status"
+CLSID_PP_Device="{0932B8A4-BBB4-4bc0-A8AB-91C626950C75}"
+CLSID_PP_Device_Desc="Device Settings"
+CLSID_PP_Troubleshooting="{517539A3-905F-4755-9F94-D91B095A07CC}"
+CLSID_PP_Troubleshooting_Desc="Troubleshooting"
+CLSID_PP_Traffic="{DE7371F4-4CCD-47cd-B12B-8887C9125895}"
+CLSID_PP_Traffic_Desc="USB Traffic"
+CLSID_PP_Debug="{5872C980-0AAF-4cdb-A62D-4F453DA2EFAD}"
+CLSID_PP_Debug_Desc="Debug"
+CLSID_PP_Registers="{4C8DD17E-7079-4c7e-96E5-A7AFDB12F132}"
+CLSID_PP_Registers_Desc="Registers"
+CLSID_PP_DS_PIN="Pin Property Page"
+CLSID_PP_DEVICE_INFORMATION ="{65A3CD37-3208-45B1-8F10-5F5BAD78DDD8}"
+CLSID_PP_DEVICE_INFORMATION_Desc="Device Information"
+AMD64_WOW6432CLSIDNODE="SOFTWARE\Wow6432Node\Classes\CLSID"
+KEY_CONFERENCING="Software\Microsoft\Conferencing\CaptureDevices"
+lvcoinst32="lvci1201278.dll"
+lvcoinst64="lvco1201278.dll"
+
+[Strings.0411]
+PVD="Logicool"
+LogitechMfg="Logicool"
+DISK_NAME="Logicool USB Video Camera Disk"
+PID_0928_DD="Logicool Qcam Express"
+PID_092D_DD="Logicool Qcam Express/Go"
+PID_092E_DD="Logicool Qcam Chat"
+PID_092F_DD="Logicool Qcam Express/Go"
+LVfWWDMDriverDesc="Logicool USB Video Camera"
+lvcoinst32="lvci1201278.dll"
+lvcoinst64="lvco1201278.dll"
+ProxyVCap.CLSID="{17CCA71B-ECD7-11D0-B908-00A0C9223196}"
+KSCATEGORY_CAPTURE="{65E8773D-8F56-11D0-A3B9-00A0C9223196}"
+DS_PinPropertyPage.CLSID = "{6691680C-8B1C-49ec-9254-8FFBE471C256}"
+SERVICE_KERNEL_DRIVER=1
+SERVICE_DEMAND_START=3
+SERVICE_ERROR_NORMAL=1
+MMDrivers="Software\Microsoft\Windows NT\CurrentVersion\Drivers32"
+MedSets="SYSTEM\CurrentControlSet\Control\MediaSets"
+ExtensionDLL = "LVUI2.dll"
+ExtensionDLL64 = "LVUI64.dll"
+DualCamApp="Qsync.exe"
+QuickSyncApp="Qsync.exe"
+QuickSyncArg="/QuickSync"
+ICM_Prfl="sRGB Color Space Profile.icm"
+REG_APPS="Software\Logitech\LVComS\CurrentVersion\RegisteredApplications\{D2B479C0-C3F2-11D1-B014-00AA00CF90F9}"
+QC_DRVS="Software\Logitech\QuickCam\Drivers"
+DCA500ACONTROL="Software\CA561B\CA500ACONTROL"
+DVIDEOPROCAMP="Software\CA561B\VIDEOPROCAMP"
+FILTER_NAME="{9b365890-165f-11d0-a195-0020afd156e4}"
+CLSID_PropSet_LVCam_PPages="{38760DCD-13F4-4a73-8802-520C31143999}"
+CLSID_PP_Advanced="{1159F2AF-F989-4d11-8B34-9550029269BB}"
+CLSID_PP_Advanced_Desc="Advanced properties"
+CLSID_PP_Status="{09AC4892-81B7-4d39-B235-8F0DB0DAF4F8}"
+CLSID_PP_Status_Desc="Status"
+CLSID_PP_Device="{0932B8A4-BBB4-4bc0-A8AB-91C626950C75}"
+CLSID_PP_Device_Desc="Device Settings"
+CLSID_PP_Troubleshooting="{517539A3-905F-4755-9F94-D91B095A07CC}"
+CLSID_PP_Troubleshooting_Desc="Troubleshooting"
+CLSID_PP_Traffic="{DE7371F4-4CCD-47cd-B12B-8887C9125895}"
+CLSID_PP_Traffic_Desc="USB Traffic"
+CLSID_PP_Debug="{5872C980-0AAF-4cdb-A62D-4F453DA2EFAD}"
+CLSID_PP_Debug_Desc="Debug"
+CLSID_PP_Registers="{4C8DD17E-7079-4c7e-96E5-A7AFDB12F132}"
+CLSID_PP_Registers_Desc="Registers"
+CLSID_PP_DS_PIN="Pin Property Page"
+CLSID_PP_DEVICE_INFORMATION ="{65A3CD37-3208-45B1-8F10-5F5BAD78DDD8}"
+CLSID_PP_DEVICE_INFORMATION_Desc="Device Information"
+AMD64_WOW6432CLSIDNODE="SOFTWARE\Wow6432Node\Classes\CLSID"
+KEY_CONFERENCING="Software\Microsoft\Conferencing\CaptureDevices"
+
+
+

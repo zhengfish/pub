@@ -1,0 +1,611 @@
+;-------------------------------------------------------
+; File: lvPEPI2s.inf
+; Logitech Video2 Camera Installation file
+; Copyright (c) 1996-2009 Logitech Inc.
+;-------------------------------------------------------
+
+[Version]
+Signature="$CHICAGO$"
+Class=MEDIA
+ClassGUID={4d36e96c-e325-11ce-bfc1-08002be10318}
+provider=%PVD%
+CatalogFile=lvPEPI2s.cat
+LayoutFile=layout.inf, layout1.inf, layout2.inf
+DriverVer=04/30/2009, 12.0.1278.0
+
+[SourceDisksNames]
+1=%DISK_NAME%,,,
+
+[SourceDisksFiles]
+lvcoinst.dll=1
+lvcoinst.ini=1
+lv302af.sys=1
+Repository.reg=1
+lvrs.sys=1
+WUApp32.exe=1
+
+[Manufacturer]
+%MfgName%=Logitech,nt.6.0
+
+[Logitech]
+%USB\VID_046D&PID_089D.DeviceDesc%=QC.OO3,usb\vid_046d&pid_089d&mi_01
+%USB\VID_046D&PID_08D7.DeviceDesc%=QC.SULLY,usb\vid_046d&pid_08d7&mi_01
+%USB\VID_046D&PID_08D8.DeviceDesc%=QC.HARRISON2,usb\vid_046d&pid_08d8&mi_01
+%USB\VID_046D&PID_08D9.DeviceDesc%=QC.POPEYE,usb\vid_046d&pid_08d9&mi_01
+%USB\VID_046D&PID_08DA.DeviceDesc%=QC.BRUTUS,usb\vid_046d&pid_08da&mi_01
+%USB\VID_046D&PID_08DD.DeviceDesc%=QC.WA,usb\vid_046d&pid_08dd&mi_01
+
+[Logitech.NT.6.0]
+%USB\VID_046D&PID_089D.DeviceDesc%=QC.OO3.VISTA,usb\vid_046d&pid_089d&mi_01
+%USB\VID_046D&PID_08D7.DeviceDesc%=PID08D7.VISTA,usb\vid_046d&pid_08d7&mi_01
+%USB\VID_046D&PID_08D8.DeviceDesc%=PID08D8.VISTA,usb\vid_046d&pid_08d8&mi_01
+%USB\VID_046D&PID_08D9.DeviceDesc%=PID08D9.VISTA,usb\vid_046d&pid_08d9&mi_01
+%USB\VID_046D&PID_08DA.DeviceDesc%=PID08DA.VISTA,usb\vid_046d&pid_08da&mi_01
+%USB\VID_046D&PID_08DD.DeviceDesc%=QC.WA.VISTA,usb\vid_046d&pid_08dd&mi_01
+
+[DestinationDirs]
+DefaultDestDir = 10,system32\drivers
+CopyCoInstaller=11
+LvPepFilter.CopySys=10,system32\drivers
+RightSound.CopyFile=10,system32\drivers
+WUAPP32.Files=16427,logishrd
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[AddLowerFilter.NT]
+HKR,,LowerFilters,0x10008,pepifilter
+
+[LvPepFilter.CopySys]
+lv302af.sys
+
+[pepifilter_Service]
+DisplayName    = %pepifilter.SrvDesc%
+ServiceType    = 1                   ; = SERVICE_KERNEL_DRIVER
+StartType      = 3                   ; = SERVICE_DEMAND_START
+ErrorControl   = 1                   ; = SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\lv302af.sys
+
+[QC.HARRISON2]
+Include=ks.inf, wdmaudio.inf, wdma_usb.inf
+Needs=KS.Registration, WDMAUDIO.Registration, USBAudio
+AddReg=PCM2USB.AddReg, RecordDevice.AddReg.ALL, RecordDevice.AddReg,RightSound.AddReg,RightSoundSrv.AddReg
+CopyFiles=LvPepFilter.CopySys,RightSound.CopyFile
+DriverVer=04/30/2009, 12.0.1278.0
+
+[QC.HARRISON2.NT]
+Include=ks.inf, wdmaudio.inf, wdma_usb.inf
+Needs=KS.Registration, WDMAUDIO.Registration.NT, USBAudio.NT
+AddReg=PCM2USB.AddReg, QC.HARRISON2.AddReg, RecordDevice.AddReg.NT,RightSound.AddReg,RightSoundSrv.AddReg
+CopyFiles=WUAPP32.Files,LvPepFilter.CopySys,RightSound.CopyFile
+DriverVer=04/30/2009, 12.0.1278.0
+
+[PID08D8.VISTA]
+Include=ks.inf, wdmaudio.inf, wdma_usb.inf
+Needs=KS.Registration, WDMAUDIO.Registration.NT, USBAudio
+AddReg=PCM2USB.AddReg, QC.HARRISON2.AddReg, RecordDevice.AddReg.NT,RightSound.AddReg,RightSoundSrv.AddReg
+CopyFiles=WUAPP32.Files,LvPepFilter.CopySys,RightSound.CopyFile
+DriverVer=04/30/2009, 12.0.1278.0
+
+[QC.HARRISON2.NT.HW]
+AddReg=AddLowerFilter.NT,RightSoundFilter.NT
+
+[PID08D8.VISTA.HW]
+AddReg=AddLowerFilter.NT,RightSoundFilter.NT
+
+[QC.HARRISON2.NT.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,"GLOBAL",QC.HARRISON2.Interface,
+AddInterface=%KSCATEGORY_RENDER%,"GLOBAL",QC.HARRISON2.Interface,
+AddInterface=%KSCATEGORY_CAPTURE%,"GLOBAL",QC.HARRISON2.Interface,
+
+[PID08D8.VISTA.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,"GLOBAL",QC.HARRISON2.Interface,
+AddInterface=%KSCATEGORY_RENDER%,"GLOBAL",QC.HARRISON2.Interface,
+AddInterface=%KSCATEGORY_CAPTURE%,"GLOBAL",QC.HARRISON2.Interface,
+
+[QC.HARRISON2.AddReg]
+HKCU,%MediaPrefered%,"Record",,%USB\VID_046D&PID_08D8.DeviceDesc%
+HKCU,%MediaPrefered%,"UserRecord",,%USB\VID_046D&PID_08D8.DeviceDesc%
+
+[QC.HARRISON2.Interface]
+AddReg=QC.HARRISON2.Int.Addreg
+
+[QC.HARRISON2.Int.AddReg]
+HKR,,CurveType,1,01,00,00,00
+HKR,,FriendlyName,,%USB\VID_046D&PID_08D8.DeviceDesc%
+HKR,,CLSID,,%Proxy.CLSID%
+HKR,,LVFunctions,0x10001,0x03
+HKR,,LVFeatures,0x10001,0x00
+HKR,,LVCategories,0x10001,0x1141
+HKR,,LVDistribution,0x10001,0x1
+
+[QC.HARRISON2.NT.Services]
+Include=wdma_usb.inf
+Needs=USBAudio.NT.Services
+AddService = pepifilter,0x00000000,pepifilter_Service
+AddService = lvrs,0x00000000,lvrs_Service
+
+[PID08D8.VISTA.Services]
+Include=wdma_usb.inf
+Needs=USBAudio.Services
+AddService = pepifilter,0x00000000,pepifilter_Service
+AddService = lvrs,0x00000000,lvrs_Service
+
+[QC.HARRISON2.NT.CoInstallers]
+CopyFiles=CopyCoInstaller
+AddReg=CoInstaller.AddReg
+
+[PID08D8.VISTA.CoInstallers]
+CopyFiles=CopyCoInstaller
+AddReg=CoInstaller.AddReg
+
+[QC.SULLY]
+Include=ks.inf, wdmaudio.inf, wdma_usb.inf
+Needs=KS.Registration, WDMAUDIO.Registration, USBAudio
+AddReg=PCM2USB.AddReg, RecordDevice.AddReg.ALL, RecordDevice.AddReg,RightSound.AddReg,RightSoundSrv.AddReg
+CopyFiles=LvPepFilter.CopySys,RightSound.CopyFile
+DriverVer=04/30/2009, 12.0.1278.0
+
+[QC.SULLY.NT]
+Include=ks.inf, wdmaudio.inf, wdma_usb.inf
+Needs=KS.Registration, WDMAUDIO.Registration.NT, USBAudio.NT
+AddReg=PCM2USB.AddReg, RecordDevice.AddReg.QC.SULLY, RecordDevice.AddReg.NT,RightSound.AddReg,RightSoundSrv.AddReg
+CopyFiles=WUAPP32.Files,LvPepFilter.CopySys,RightSound.CopyFile
+DriverVer=04/30/2009, 12.0.1278.0
+
+[PID08D7.VISTA]
+Include=ks.inf, wdmaudio.inf, wdma_usb.inf
+Needs=KS.Registration, WDMAUDIO.Registration.NT, USBAudio
+AddReg=PCM2USB.AddReg, RecordDevice.AddReg.QC.SULLY, RecordDevice.AddReg.NT,RightSound.AddReg,RightSoundSrv.AddReg
+CopyFiles=WUAPP32.Files,LvPepFilter.CopySys,RightSound.CopyFile
+DriverVer=04/30/2009, 12.0.1278.0
+
+[QC.SULLY.NT.HW]
+AddReg=AddLowerFilter.NT,RightSoundFilter.NT
+
+[PID08D7.VISTA.HW]
+AddReg=AddLowerFilter.NT,RightSoundFilter.NT
+
+[QC.SULLY.NT.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,"GLOBAL",QC.SULLY.Interface,
+AddInterface=%KSCATEGORY_RENDER%,"GLOBAL",QC.SULLY.Interface,
+AddInterface=%KSCATEGORY_CAPTURE%,"GLOBAL",QC.SULLY.Interface,
+
+[PID08D7.VISTA.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,"GLOBAL",QC.SULLY.Interface,
+AddInterface=%KSCATEGORY_RENDER%,"GLOBAL",QC.SULLY.Interface,
+AddInterface=%KSCATEGORY_CAPTURE%,"GLOBAL",QC.SULLY.Interface,
+
+[RecordDevice.AddReg.QC.SULLY]
+HKCU,%MediaPrefered%,"Record",,%USB\VID_046D&PID_08D7.DeviceDesc%
+HKCU,%MediaPrefered%,"UserRecord",,%USB\VID_046D&PID_08D7.DeviceDesc%
+
+[QC.SULLY.Interface]
+AddReg=QC.SULLY.Int.Addreg
+
+[QC.SULLY.Int.AddReg]
+HKR,,CurveType,1,01,00,00,00
+HKR,,FriendlyName,,%USB\VID_046D&PID_08D7.DeviceDesc%
+HKR,,CLSID,,%Proxy.CLSID%
+HKR,,LVFunctions,0x10001,0x03
+HKR,,LVFeatures,0x10001,0x00
+HKR,,LVCategories,0x10001,0x1141
+HKR,,LVDistribution,0x10001,0x1
+
+[QC.SULLY.NT.Services]
+Include=wdma_usb.inf
+Needs=USBAudio.NT.Services
+AddService = pepifilter,0x00000000,pepifilter_Service
+AddService = lvrs,0x00000000,lvrs_Service
+
+[PID08D7.VISTA.Services]
+Include=wdma_usb.inf
+Needs=USBAudio.Services
+AddService = pepifilter,0x00000000,pepifilter_Service
+AddService = lvrs,0x00000000,lvrs_Service
+
+[QC.SULLY.NT.CoInstallers]
+CopyFiles=CopyCoInstaller
+AddReg=CoInstaller.AddReg
+
+[PID08D7.VISTA.CoInstallers]
+CopyFiles=CopyCoInstaller
+AddReg=CoInstaller.AddReg
+
+[QC.POPEYE]
+Include=ks.inf, wdmaudio.inf, wdma_usb.inf
+Needs=KS.Registration, WDMAUDIO.Registration, USBAudio
+AddReg=PCM2USB.AddReg, RecordDevice.AddReg.ALL, RecordDevice.AddReg,RightSound.AddReg,RightSoundSrv.AddReg
+CopyFiles=LvPepFilter.CopySys,RightSound.CopyFile
+DriverVer=04/30/2009, 12.0.1278.0
+
+[QC.POPEYE.NT]
+Include=ks.inf, wdmaudio.inf, wdma_usb.inf
+Needs=KS.Registration, WDMAUDIO.Registration.NT, USBAudio.NT
+AddReg=PCM2USB.AddReg, QC.POPEYE.AddReg, RecordDevice.AddReg.NT,RightSound.AddReg,RightSoundSrv.AddReg
+CopyFiles=WUAPP32.Files,LvPepFilter.CopySys,RightSound.CopyFile
+DriverVer=04/30/2009, 12.0.1278.0
+
+[PID08D9.VISTA]
+Include=ks.inf, wdmaudio.inf, wdma_usb.inf
+Needs=KS.Registration, WDMAUDIO.Registration.NT, USBAudio
+AddReg=PCM2USB.AddReg, QC.POPEYE.AddReg, RecordDevice.AddReg.NT,RightSound.AddReg,RightSoundSrv.AddReg
+CopyFiles=WUAPP32.Files,LvPepFilter.CopySys,RightSound.CopyFile
+DriverVer=04/30/2009, 12.0.1278.0
+
+[QC.POPEYE.NT.HW]
+AddReg=AddLowerFilter.NT,RightSoundFilter.NT
+
+[PID08D9.VISTA.HW]
+AddReg=AddLowerFilter.NT,RightSoundFilter.NT
+
+[QC.POPEYE.NT.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,"GLOBAL",QC.POPEYE.Interface,
+AddInterface=%KSCATEGORY_RENDER%,"GLOBAL",QC.POPEYE.Interface,
+AddInterface=%KSCATEGORY_CAPTURE%,"GLOBAL",QC.POPEYE.Interface,
+
+[PID08D9.VISTA.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,"GLOBAL",QC.POPEYE.Interface,
+AddInterface=%KSCATEGORY_RENDER%,"GLOBAL",QC.POPEYE.Interface,
+AddInterface=%KSCATEGORY_CAPTURE%,"GLOBAL",QC.POPEYE.Interface,
+
+[QC.POPEYE.AddReg]
+HKCU,%MediaPrefered%,"Record",,%USB\VID_046D&PID_08D9.DeviceDesc%
+HKCU,%MediaPrefered%,"UserRecord",,%USB\VID_046D&PID_08D9.DeviceDesc%
+
+[QC.POPEYE.Interface]
+AddReg=QC.POPEYE.Int.Addreg
+
+[QC.POPEYE.Int.AddReg]
+HKR,,CurveType,1,01,00,00,00
+HKR,,FriendlyName,,%USB\VID_046D&PID_08D9.DeviceDesc%
+HKR,,CLSID,,%Proxy.CLSID%
+HKR,,LVFunctions,0x10001,0x03
+HKR,,LVFeatures,0x10001,0x00
+HKR,,LVCategories,0x10001,0x1141
+HKR,,LVDistribution,0x10001,0x1
+HKR,Mixer\0\Controls\1,Channel0,0x10001,51914
+
+[QC.POPEYE.NT.Services]
+Include=wdma_usb.inf
+Needs=USBAudio.NT.Services
+AddService = pepifilter,0x00000000,pepifilter_Service
+AddService = lvrs,0x00000000,lvrs_Service
+
+[PID08D9.VISTA.Services]
+Include=wdma_usb.inf
+Needs=USBAudio.Services
+AddService = pepifilter,0x00000000,pepifilter_Service
+AddService = lvrs,0x00000000,lvrs_Service
+
+[QC.POPEYE.NT.CoInstallers]
+CopyFiles=CopyCoInstaller
+AddReg=CoInstaller.AddReg
+
+[PID08D9.VISTA.CoInstallers]
+CopyFiles=CopyCoInstaller
+AddReg=CoInstaller.AddReg
+
+[QC.BRUTUS]
+Include=ks.inf, wdmaudio.inf, wdma_usb.inf
+Needs=KS.Registration, WDMAUDIO.Registration, USBAudio
+AddReg=PCM2USB.AddReg, RecordDevice.AddReg.ALL, RecordDevice.AddReg,RightSound.AddReg,RightSoundSrv.AddReg
+CopyFiles=LvPepFilter.CopySys,RightSound.CopyFile
+DriverVer=04/30/2009, 12.0.1278.0
+
+[QC.BRUTUS.NT]
+Include=ks.inf, wdmaudio.inf, wdma_usb.inf
+Needs=KS.Registration, WDMAUDIO.Registration.NT, USBAudio.NT
+AddReg=PCM2USB.AddReg, QC.BRUTUS.AddReg, RecordDevice.AddReg.NT,RightSound.AddReg,RightSoundSrv.AddReg
+CopyFiles=WUAPP32.Files,LvPepFilter.CopySys,RightSound.CopyFile
+DriverVer=04/30/2009, 12.0.1278.0
+
+[PID08DA.VISTA]
+Include=ks.inf, wdmaudio.inf, wdma_usb.inf
+Needs=KS.Registration, WDMAUDIO.Registration.NT, USBAudio
+AddReg=PCM2USB.AddReg, QC.BRUTUS.AddReg, RecordDevice.AddReg.NT,RightSound.AddReg,RightSoundSrv.AddReg
+CopyFiles=WUAPP32.Files,LvPepFilter.CopySys,RightSound.CopyFile
+DriverVer=04/30/2009, 12.0.1278.0
+
+[QC.BRUTUS.NT.HW]
+AddReg=AddLowerFilter.NT,RightSoundFilter.NT
+
+[PID08DA.VISTA.HW]
+AddReg=AddLowerFilter.NT,RightSoundFilter.NT
+
+[QC.BRUTUS.NT.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,"GLOBAL",QC.BRUTUS.Interface,
+AddInterface=%KSCATEGORY_RENDER%,"GLOBAL",QC.BRUTUS.Interface,
+AddInterface=%KSCATEGORY_CAPTURE%,"GLOBAL",QC.BRUTUS.Interface,
+
+[PID08DA.VISTA.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,"GLOBAL",QC.BRUTUS.Interface,
+AddInterface=%KSCATEGORY_RENDER%,"GLOBAL",QC.BRUTUS.Interface,
+AddInterface=%KSCATEGORY_CAPTURE%,"GLOBAL",QC.BRUTUS.Interface,
+
+[QC.BRUTUS.AddReg]
+HKCU,%MediaPrefered%,"Record",,%USB\VID_046D&PID_08DA.DeviceDesc%
+HKCU,%MediaPrefered%,"UserRecord",,%USB\VID_046D&PID_08DA.DeviceDesc%
+
+[QC.BRUTUS.Interface]
+AddReg=QC.BRUTUS.Int.Addreg
+
+[QC.BRUTUS.Int.AddReg]
+HKR,,CurveType,1,01,00,00,00
+HKR,,FriendlyName,,%USB\VID_046D&PID_08DA.DeviceDesc%
+HKR,,CLSID,,%Proxy.CLSID%
+HKR,,LVFunctions,0x10001,0x03
+HKR,,LVFeatures,0x10001,0x00
+HKR,,LVCategories,0x10001,0x1141
+HKR,,LVDistribution,0x10001,0x1
+HKR,Mixer\0\Controls\1,Channel0,0x10001,51914
+
+[QC.BRUTUS.NT.Services]
+Include=wdma_usb.inf
+Needs=USBAudio.NT.Services
+AddService = pepifilter,0x00000000,pepifilter_Service
+AddService = lvrs,0x00000000,lvrs_Service
+
+[PID08DA.VISTA.Services]
+Include=wdma_usb.inf
+Needs=USBAudio.Services
+AddService = pepifilter,0x00000000,pepifilter_Service
+AddService = lvrs,0x00000000,lvrs_Service
+
+[QC.BRUTUS.NT.CoInstallers]
+CopyFiles=CopyCoInstaller
+AddReg=CoInstaller.AddReg
+
+[PID08DA.VISTA.CoInstallers]
+CopyFiles=CopyCoInstaller
+AddReg=CoInstaller.AddReg
+
+[RightSoundFilter.NT]
+HKR,,UpperFilters,0x10008,lvrs
+
+[RightSound.AddReg]
+HKR,,LVRSAudioFilterMaster,0x10001,0x1
+HKR,,LVRSAudioFilterNoManualSlaves,0x10001,0x1
+HKR,,LAECAudioFilterNoLoad,0x10001,0x1
+HKR,,LSAMAudioFilterNoLoad,0x10001,0x1
+
+[RightSound.AddReg]
+HKR,,LVRSAudioFilterMaster,0x10001,0x1
+HKR,,LVRSAudioFilterNoManualSlaves,0x10001,0x1
+HKR,,LAECAudioFilterNoLoad,0x10001,0x1
+HKR,,LSAMAudioFilterNoLoad,0x10001,0x1
+
+[QC.OO3]
+Include=ks.inf, wdmaudio.inf, wdma_usb.inf
+Needs=KS.Registration, WDMAUDIO.Registration, USBAudio
+AddReg=PCM2USB.AddReg, QC.OO3.AddReg, RecordDevice.AddReg.ALL, RightSound.AddReg, RecordDevice.AddReg, RightSoundSrv.AddReg
+CopyFiles=LvPepFilter.CopySys, RightSound.CopyFile
+DriverVer=04/30/2009, 12.0.1278.0
+
+[QC.OO3.NT]
+Include=ks.inf, wdmaudio.inf, wdma_usb.inf
+Needs=KS.Registration, WDMAUDIO.Registration.NT, USBAudio.NT
+AddReg=PCM2USB.AddReg, QC.OO3.AddReg, RecordDevice.AddReg.ALL,RightSound.AddReg, RecordDevice.AddReg.NT, RightSoundSrv.AddReg
+CopyFiles=WUAPP32.Files,LvPepFilter.CopySys, RightSound.CopyFile
+DriverVer=04/30/2009, 12.0.1278.0
+
+[QC.OO3.VISTA]
+Include=ks.inf, wdmaudio.inf, wdma_usb.inf
+Needs=KS.Registration, WDMAUDIO.Registration.NT, USBAudio
+AddReg=PCM2USB.AddReg, QC.OO3.AddReg, RecordDevice.AddReg.ALL,RightSound.AddReg, RecordDevice.AddReg.NT, RightSoundSrv.AddReg
+CopyFiles=WUAPP32.Files,LvPepFilter.CopySys,RightSound.CopyFile
+DriverVer=04/30/2009, 12.0.1278.0
+
+[QC.OO3.NT.HW]
+AddReg=AddLowerFilter.NT,RightSoundFilter.NT
+
+[QC.OO3.VISTA.HW]
+AddReg=AddLowerFilter.NT,RightSoundFilter.NT
+
+[QC.OO3.NT.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,"GLOBAL",QC.OO3.Interface,
+AddInterface=%KSCATEGORY_RENDER%,"GLOBAL",QC.OO3.Interface,
+AddInterface=%KSCATEGORY_CAPTURE%,"GLOBAL",QC.OO3.Interface,
+
+[QC.OO3.VISTA.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,"GLOBAL",QC.OO3.Interface,
+AddInterface=%KSCATEGORY_RENDER%,"GLOBAL",QC.OO3.Interface,
+AddInterface=%KSCATEGORY_CAPTURE%,"GLOBAL",QC.OO3.Interface,
+
+[QC.OO3.AddReg]
+HKCU,%MediaPrefered%,"Record",,%USB\VID_046D&PID_089D.DeviceDesc%
+HKCU,%MediaPrefered%,"UserRecord",,%USB\VID_046D&PID_089D.DeviceDesc%
+
+[QC.OO3.Interface]
+AddReg=QC.OO3.Int.Addreg
+
+[QC.OO3.Int.AddReg]
+HKR,,CurveType,1,01,00,00,00
+HKR,,FriendlyName,,%USB\VID_046D&PID_089D.DeviceDesc%
+HKR,,CLSID,,%Proxy.CLSID%
+HKR,,LVFunctions,0x10001,0x03
+HKR,,LVFeatures,0x10001,0x00
+HKR,,LVCategories,0x10001,0x1141
+HKR,,LVDistribution,0x10001,0x1
+
+[QC.OO3.NT.Services]
+Include=wdma_usb.inf
+Needs=USBAudio.NT.Services
+AddService = pepifilter,0x00000000,pepifilter_Service
+AddService = lvrs,0x00000000,lvrs_Service
+
+[QC.OO3.VISTA.Services]
+Include=wdma_usb.inf
+Needs=USBAudio.Services
+AddService = pepifilter,0x00000000,pepifilter_Service
+AddService = lvrs,0x00000000,lvrs_Service
+
+[QC.OO3.NT.CoInstallers]
+CopyFiles=CopyCoInstaller
+AddReg=CoInstaller.AddReg
+
+[QC.OO3.VISTA.CoInstallers]
+CopyFiles=CopyCoInstaller
+AddReg=CoInstaller.AddReg
+
+[QC.WA]
+Include=ks.inf, wdmaudio.inf, wdma_usb.inf
+Needs=KS.Registration, WDMAUDIO.Registration, USBAudio
+AddReg=PCM2USB.AddReg, RecordDevice.AddReg.ALL, RecordDevice.AddReg,RightSound.AddReg,RightSoundSrv.AddReg
+CopyFiles=LvPepFilter.CopySys,RightSound.CopyFile
+DriverVer=04/30/2009, 12.0.1278.0
+
+[QC.WA.NT]
+Include=ks.inf, wdmaudio.inf, wdma_usb.inf
+Needs=KS.Registration, WDMAUDIO.Registration.NT, USBAudio.NT
+AddReg=PCM2USB.AddReg, QC.WA.AddReg, RecordDevice.AddReg.NT,RightSound.AddReg,RightSoundSrv.AddReg
+CopyFiles=WUAPP32.Files,LvPepFilter.CopySys,RightSound.CopyFile
+DriverVer=04/30/2009, 12.0.1278.0
+
+[QC.WA.VISTA]
+Include=ks.inf, wdmaudio.inf, wdma_usb.inf
+Needs=KS.Registration, WDMAUDIO.Registration.NT, USBAudio
+AddReg=PCM2USB.AddReg, QC.WA.AddReg, RecordDevice.AddReg.NT,RightSound.AddReg,RightSoundSrv.AddReg
+CopyFiles=WUAPP32.Files,LvPepFilter.CopySys,RightSound.CopyFile
+DriverVer=04/30/2009, 12.0.1278.0
+
+[QC.WA.NT.HW]
+AddReg=AddLowerFilter.NT,RightSoundFilter.NT
+
+[QC.WA.VISTA.HW]
+AddReg=AddLowerFilter.NT,RightSoundFilter.NT
+
+[QC.WA.NT.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,"GLOBAL",QC.WA.Interface,
+AddInterface=%KSCATEGORY_RENDER%,"GLOBAL",QC.WA.Interface,
+AddInterface=%KSCATEGORY_CAPTURE%,"GLOBAL",QC.WA.Interface,
+
+[QC.WA.VISTA.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,"GLOBAL",QC.WA.Interface,
+AddInterface=%KSCATEGORY_RENDER%,"GLOBAL",QC.WA.Interface,
+AddInterface=%KSCATEGORY_CAPTURE%,"GLOBAL",QC.WA.Interface,
+
+[QC.WA.AddReg]
+HKCU,%MediaPrefered%,"Record",,%USB\VID_046D&PID_08DD.DeviceDesc%
+HKCU,%MediaPrefered%,"UserRecord",,%USB\VID_046D&PID_08DD.DeviceDesc%
+
+[QC.WA.Interface]
+AddReg=QC.WA.Int.Addreg
+
+[QC.WA.Int.AddReg]
+HKR,,CurveType,1,01,00,00,00
+HKR,,FriendlyName,,%USB\VID_046D&PID_08DD.DeviceDesc%
+HKR,,CLSID,,%Proxy.CLSID%
+HKR,,LVFunctions,0x10001,0x03
+HKR,,LVFeatures,0x10001,0x00
+HKR,,LVCategories,0x10001,0x1141
+HKR,,LVDistribution,0x10001,0x1
+
+[QC.WA.NT.Services]
+Include=wdma_usb.inf
+Needs=USBAudio.NT.Services
+AddService = pepifilter,0x00000000,pepifilter_Service
+AddService = lvrs,0x00000000,lvrs_Service
+
+[QC.WA.VISTA.Services]
+Include=wdma_usb.inf
+Needs=USBAudio.Services
+AddService = pepifilter,0x00000000,pepifilter_Service
+AddService = lvrs,0x00000000,lvrs_Service
+
+[QC.WA.NT.CoInstallers]
+CopyFiles=CopyCoInstaller
+AddReg=CoInstaller.AddReg
+
+[QC.WA.VISTA.CoInstallers]
+CopyFiles=CopyCoInstaller
+AddReg=CoInstaller.AddReg
+
+[PCM2USB.AddReg]
+HKR,,OkToHibernate,3,01
+HKR,,SetupPreferredAudioDevices,3,00
+HKR,,IgnoreHWString,0x10001,0x01
+
+[RecordDevice.AddReg]
+HKLM,"Software\Logitech\QuickCam\Drivers","Audio",,%USBGenericDesc%
+HKCU,%MediaPrefered%,"PreferredOnly",1,01,00,00,00
+
+[RecordDevice.AddReg.NT]
+HKLM,"Software\Logitech\QuickCam\Drivers","Audio",,%USBGenericDesc%
+HKCU,%MediaPrefered%,"PreferredOnly",1,01,00,00,00
+HKCU,%MediaPrefered%,"SetupPreferredAudioDevicesCount",1,00,00,00,00
+
+[RecordDevice.AddReg.ALL]
+HKCU,%MediaPrefered%,"Record",,%USBGenericDesc%
+HKCU,%MediaPrefered%,"UserRecord",,%USBGenericDesc%
+
+[CopyCoInstaller]
+%lvcoinst32%,lvcoinst.dll,,64
+lvcoinst.ini,,,64
+Repository.reg,,,64
+
+[CoInstaller.AddReg]
+HKR,,CoInstallers32,0x00010000,"%lvcoinst32%,LvCoInstaller"
+
+[RightSoundSrv.AddReg]
+HKLM,System\CurrentControlSet\Services\LVRS,WDMMode,0x10001,0x1
+
+[RightSound.CopyFile]
+lvrs.sys
+
+[lvrs_Service]
+DisplayName    = %lvrs.SrvDesc%
+ServiceType    = 1                   ; = SERVICE_KERNEL_DRIVER
+StartType      = 3                   ; = SERVICE_DEMAND_START
+ErrorControl   = 1                   ; = SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\lvrs.sys
+
+[WUAPP32.Files]
+WUApp32.exe
+
+[Uninstall]
+DelFiles = WUAPP32.Files,LvPepFilter.CopySys,RightSound.CopyFile,CopyCoInstaller
+DelReg   = recorddevice.addreg.qc.sully,recorddevice.addreg.nt,rightsoundsrv.addreg,recorddevice.addreg.all,recorddevice.addreg,qc.harrison2.addreg,qc.popeye.addreg,qc.brutus.addreg,qc.wa.addreg,qc.oo3.addreg
+
+[Strings]
+PVD="Logitech"
+MfgName="Logitech"
+DISK_NAME="Logitech USB Video Camera Disk"
+USBGenericDesc="Logitech Microphone"
+USB\VID_046D&PID_089D.DeviceDesc="Logitech Mic (QuickCam E2500)"
+USB\VID_046D&PID_08D7.DeviceDesc="Logitech Mic (Communicate STX)"
+USB\VID_046D&PID_08D8.DeviceDesc="Logitech Mic (Notebooks Deluxe)"
+USB\VID_046D&PID_08D9.DeviceDesc="Logitech Mic (IM/Connect)"
+USB\VID_046D&PID_08DA.DeviceDesc="Logitech Microphone (QuickCam)"
+USB\VID_046D&PID_08DD.DeviceDesc="Logitech Mic (Notebooks)"
+MediaPrefered="Software\Microsoft\Multimedia\Sound Mapper"
+Proxy.CLSID     = "{17CCA71B-ECD7-11D0-B908-00A0C9223196}"
+KSCATEGORY_AUDIO="{6994ad04-93ef-11d0-a3cc-00a0c9223196}"
+KSCATEGORY_RENDER="{65E8773E-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_CAPTURE="{65E8773D-8F56-11D0-A3B9-00A0C9223196}"
+pepifilter.SrvDesc="Volume Adapter"
+lvrs.SrvDesc="Logitech RightSound Filter Driver"
+lvcoinst32="lvci1201278.dll"
+
+[Strings.0411]
+PVD="Logicool"
+MfgName="Logicool"
+DISK_NAME="Logicool USB Video Camera Disk"
+USBGenericDesc="Logicool Microphone"
+USB\VID_046D&PID_089D.DeviceDesc="Logicool Mic (Qcam E2500)"
+USB\VID_046D&PID_08D7.DeviceDesc="Logicool Mic (Communicate STX)"
+USB\VID_046D&PID_08D8.DeviceDesc="Logicool Mic (Notebooks Deluxe)"
+USB\VID_046D&PID_08D9.DeviceDesc="Logicool Mic (IM/Connect)"
+USB\VID_046D&PID_08DA.DeviceDesc="Logicool Microphone (Qcam)"
+USB\VID_046D&PID_08DD.DeviceDesc="Logicool Mic (Notebooks)"
+lvrs.SrvDesc="Logicool RightSound Filter Driver"
+lvcoinst32="lvci1201278.dll"
+MediaPrefered="Software\Microsoft\Multimedia\Sound Mapper"
+Proxy.CLSID     = "{17CCA71B-ECD7-11D0-B908-00A0C9223196}"
+KSCATEGORY_AUDIO="{6994ad04-93ef-11d0-a3cc-00a0c9223196}"
+KSCATEGORY_RENDER="{65E8773E-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_CAPTURE="{65E8773D-8F56-11D0-A3B9-00A0C9223196}"
+pepifilter.SrvDesc="Volume Adapter"
+
+
+
